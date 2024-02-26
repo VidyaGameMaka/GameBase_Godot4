@@ -10,7 +10,7 @@ Rename the folder to a name that you desire then import the project.godot file i
 * Multiple Channel Audio System (Master, Music, Voice, Male, Female)  
 * Video system with resolution changing and fullscreen and windowed mode with automatic centering  
 * Translation system with support for text and audio file translation  
-* Example menus:  
+* Includes example menus:  
   * Main Menu  
   * Video Menu  
   * Audio Menu  
