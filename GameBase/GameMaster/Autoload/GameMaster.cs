@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Linq;
 
 public partial class GameMaster : Node {
 
@@ -70,18 +69,30 @@ public partial class GameMaster : Node {
     }
 
     public static void ApplyGameDataVideoSettings() {
+
+        //Determine which monitor the window is on
+        int currentScreen = DisplayServer.WindowGetCurrentScreen();
+
+        //Make full screen on the monitor the window is on
         if (gameData.isFullScreen == true) {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen, currentScreen);
         }
 
         if (gameData.isFullScreen == false) {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+            //Make window mode on the monitor the window is on
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed, currentScreen);
 
-            //Use ElementAt with the index number from GameMaster.gameData.resolutionIndex to get key and value from the dictionary
-            //ElementAt is a method provided by System.Linq.
-            int key = gameData.windowResolutions.ElementAt(gameData.resolutionIndex).Key;
-            int value = gameData.windowResolutions.ElementAt(gameData.resolutionIndex).Value;
-            DisplayServer.WindowSetSize(new Vector2I(key, value));
+            //Use gameData ResolutionIndex to find the resolution that is currently set.
+            //This will return a Vector2I That WindowSetSize is expecting.
+            Vector2I currentRez = gameData.windowResolutions[gameData.resolutionIndex];
+            DisplayServer.WindowSetSize(currentRez);
+
+            //Center window on current screen.            
+            Vector2I currentWinSize = DisplayServer.ScreenGetSize(currentScreen);
+            DisplayServer.WindowSetPosition(new Vector2I(
+                currentWinSize.X/2 - currentRez.X /2,
+                currentWinSize.Y/ 2 - currentRez.Y / 2),
+                currentScreen);
         }
 
         //Save Game Data when Resolution is applied.
@@ -267,11 +278,13 @@ public partial class GameMaster : Node {
     /// <summary>
     /// Resets all of the Saved Data.
     /// </summary>
-    private static void ResetAllData() {
-        initializeSlots(SaveTypes.gameDat, gameDataSlotNum);
-        initializeSlots(SaveTypes.playerDat, 1);
-        initializeSlots(SaveTypes.playerDat, 2);
-        initializeSlots(SaveTypes.playerDat, 3);
+    public static void ResetAllData() {
+        DeleteGameData();
+        DeletePlayerData(1);
+        DeletePlayerData(2);
+        DeletePlayerData(3);
+
+        GD.Print("(GameMaster) ResetAllData - All Game Data Reset!");
     }
 
 }

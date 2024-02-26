@@ -16,20 +16,20 @@ public partial class AudioMenu : CanvasLayer {
 
 	public override void _Ready() {
         //Assign Labels
-        master_label = GetNode<Label>("master_label");
-        music_label = GetNode<Label>("music_label");
-        sfx_label = GetNode<Label>("sfx_label");
-        voice_label = GetNode<Label>("voice_label");
-        male_label = GetNode<Label>("male_label");
-        female_label = GetNode<Label>("female_label");      
+        master_label = GetNode<Label>("Control/master_label");
+        music_label = GetNode<Label>("Control/music_label");
+        sfx_label = GetNode<Label>("Control/sfx_label");
+        voice_label = GetNode<Label>("Control/voice_label");
+        male_label = GetNode<Label>("Control/male_label");
+        female_label = GetNode<Label>("Control/female_label");      
 
         //Assign Slider Nodes
-        master_hslider = GetNode<HSlider>("master_hslider");
-        music_hslider = GetNode<HSlider>("music_hslider");
-        sfx_hslider = GetNode<HSlider>("sfx_hslider");
-        voice_hslider = GetNode<HSlider>("voice_hslider");
-        male_hslider = GetNode<HSlider>("male_hslider");
-        female_hslider = GetNode<HSlider>("female_hslider");
+        master_hslider = GetNode<HSlider>("Control/master_hslider");
+        music_hslider = GetNode<HSlider>("Control/music_hslider");
+        sfx_hslider = GetNode<HSlider>("Control/sfx_hslider");
+        voice_hslider = GetNode<HSlider>("Control/voice_hslider");
+        male_hslider = GetNode<HSlider>("Control/male_hslider");
+        female_hslider = GetNode<HSlider>("Control/female_hslider");
 
         //Set the initial slider values
         master_hslider.Value = GameMaster.gameData.masterVolume;
@@ -40,7 +40,7 @@ public partial class AudioMenu : CanvasLayer {
         female_hslider.Value = GameMaster.gameData.femaleVolume;
 
         //Buttons
-        backButton = GetNode<Button>("backButton");
+        backButton = GetNode<Button>("Control/backButton");
         backButton.Text = Lng.mainMenu[4]; //Back
     }
 

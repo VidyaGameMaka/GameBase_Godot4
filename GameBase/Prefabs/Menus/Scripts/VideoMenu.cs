@@ -13,7 +13,7 @@ public partial class VideoMenu : CanvasLayer {
 
     [ExportGroup("System Buttons")]
     [Export] private Button applyButton;
-    [Export] private Button backButton; 
+    [Export] private Button backButton;
 
     private int mySelectedRez = 0;
 
@@ -51,12 +51,23 @@ public partial class VideoMenu : CanvasLayer {
     }
 
     private void AddResolutionsToButton() {
-        //List of Resolutions is stored in GameData.cs
+        //Add the current resolution to the top of the list.
+        Vector2I currentRez = GameMaster.gameData.windowResolutions[GameMaster.gameData.resolutionIndex];
+        string currentString = currentRez.X + "x" + currentRez.Y;
+        resOptionsButton.AddItem(currentString, GameMaster.gameData.resolutionIndex);
+
         //Iterate through each entry in resolutionList array and add them as strings to the button       
-        foreach (var item in GameMaster.gameData.windowResolutions) {           
-            string myString = item.Key + "x" + item.Value;
-            resOptionsButton.AddItem(myString);
+        //List of Resolutions is stored in GameData.cs
+        foreach (var item in GameMaster.gameData.windowResolutions) {
+
+            //Only add resolutions to the rest of the button if they are not the current res
+            if (item.Key != GameMaster.gameData.resolutionIndex) {
+                string myString = item.Value.X + "x" + item.Value.Y;
+                resOptionsButton.AddItem(myString, item.Key);
+            }
+
         }
+
     }
 
     public void _on_back_button_button_up() {
@@ -69,8 +80,14 @@ public partial class VideoMenu : CanvasLayer {
         SetWindowLabel(toggled);
     }
 
-    public void _on_resolution_options_button_item_selected(int argRez) {
-        mySelectedRez = argRez;        
+    public void _on_resolution_options_button_item_selected(int myInt) {
+        GD.Print("Int Sent: " +  myInt);
+        GD.Print("ID: " + resOptionsButton.GetItemId(myInt));
+        
+
+        //Get the ID from the argument myInt
+        int myID = resOptionsButton.GetItemId(myInt);
+        mySelectedRez = myID;
     }
 
     public void _on_apply_button_button_up() {

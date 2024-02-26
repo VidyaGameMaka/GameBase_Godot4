@@ -132,10 +132,7 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
 
     public void _on_allreset_button_button_up() {
         if (GameMaster.showDebuggingMessages) { GD.Print("(MainMenu) All Data reset!"); }
-        GameMaster.DeleteGameData();
-        GameMaster.DeletePlayerData(1);
-        GameMaster.DeletePlayerData(2);
-        GameMaster.DeletePlayerData(3);
+        GameMaster.ResetAllData();
         SetupMenu();
     }
 
