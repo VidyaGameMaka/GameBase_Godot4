@@ -5,7 +5,7 @@ public partial class Translator : Node {
 
 	public static Translator instance;
 
-    public static Lng runLang;
+    public static Lng rLng = new Lng();
 
     public override void _Ready() {
 	    ChangeLanguage();
@@ -14,18 +14,20 @@ public partial class Translator : Node {
     public void ChangeLanguage() {
         switch (GameMaster.gameData.language) {
             case Languages.en:
-                runLang = new en();
+                rLng = new en();
                 break;
             case Languages.sp:
-                runLang = new sp();
+                rLng = new sp();
                 break;
             default:
                 break;
         }
 
-        runLang.Run();
+        rLng.Run();
 
         GD.Print("(Translator) Language Selected: " + GameMaster.gameData.language);
+        GD.Print("(Translator) Test: " + Lng.tester);
+
     }
 
 

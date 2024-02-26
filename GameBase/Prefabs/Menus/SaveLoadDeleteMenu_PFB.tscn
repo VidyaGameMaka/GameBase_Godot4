@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_06p2i"]
 font_size = 8
 
-[node name="SaveLoadQuitMenu" type="CanvasLayer" node_paths=PackedStringArray("new1", "load1", "delete1", "new2", "load2", "delete2", "new3", "load3", "delete3", "backButton", "resetButton", "infoLabel1", "infoLabel2", "infoLabel3")]
+[node name="SaveLoadQuitMenu" type="CanvasLayer" node_paths=PackedStringArray("new1", "load1", "delete1", "new2", "load2", "delete2", "new3", "load3", "delete3", "infoLabel1", "infoLabel2", "infoLabel3")]
 script = ExtResource("1_e21ky")
 new1 = NodePath("Control/Panel1/newButton1")
 load1 = NodePath("Control/Panel1/loadButton1")
@@ -16,8 +16,6 @@ delete2 = NodePath("Control/Panel2/deleteButton2")
 new3 = NodePath("Control/Panel3/newButton3")
 load3 = NodePath("Control/Panel3/loadButton3")
 delete3 = NodePath("Control/Panel3/deleteButton3")
-backButton = NodePath("")
-resetButton = NodePath("")
 infoLabel1 = NodePath("Control/Panel1/infoLabel1")
 infoLabel2 = NodePath("Control/Panel2/infoLabel2")
 infoLabel3 = NodePath("Control/Panel3/infoLabel3")

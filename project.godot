@@ -22,6 +22,7 @@ buses/default_bus_layout="res://GameBase/Audio/default_bus_layout.tres"
 [autoload]
 
 GameMaster="*res://GameBase/GameMaster/Autoload/GameMaster.cs"
+Translator="*res://GameBase/GameMaster/Autoload/Translator.cs"
 SceneManager="*res://GameBase/GameMaster/Autoload/SceneManager.cs"
 SoundSourcesPfb="*res://GameBase/GameMaster/Autoload/SoundSources_PFB.tscn"
 

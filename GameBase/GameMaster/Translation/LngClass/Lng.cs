@@ -13,6 +13,8 @@ public enum baseDicts {
 public class Lng {
 
     #region Base Dictionaries (baseDicts)
+    public static string tester = string.Empty; //For testing, do not delete.
+
     public static Dictionary<int, string> mainMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> audioMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> saveLoadMenu = new Dictionary<int, string>();
@@ -20,9 +22,10 @@ public class Lng {
     public static Dictionary<int, string> languages = new Dictionary<int, string>();
     #endregion
 
-    public void Run() => ImplementationRun();
+    public virtual void Run() => ImplementationRun();
 
-    // Stub virtual method to be overriden in child classes
+    // Stub virtual method to be overriden by child classes
+    // En.cs and Sp.Cs
     protected virtual void ImplementationRun() {
 
         //Languages Dictionary is the same in all data sets

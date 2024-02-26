@@ -3,6 +3,10 @@ public class sp : Lng {
 
     protected override void ImplementationRun() {
 
+        #region Tester
+        tester = "Prueba de espanol";
+        #endregion
+
         #region Base Dictionaries
         //Main Menu
         mainMenu[0] = "Comenzar";

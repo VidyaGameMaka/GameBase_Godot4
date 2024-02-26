@@ -1,9 +1,12 @@
 //Inherits from Lng. English data file
-
 public class en : Lng {
 
     protected override void ImplementationRun() {
-        
+
+        #region Tester
+        tester = "English Test";
+        #endregion
+
         #region Base Dictionaries
         //Main Menu
         mainMenu[0] = "Start";

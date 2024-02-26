@@ -43,6 +43,6 @@ public class GameData {
 
     //Translation System
     public bool languageChosen = false;
-    public Languages language = Languages.sp;
+    public Languages language = Languages.en;
 
 }
