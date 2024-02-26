@@ -14,9 +14,9 @@ public partial class SceneManager : Node {
     /// Scene Enum, Scene Path, Pretty Scene Name, pauseAllowed
     /// </summary>
     public Dictionary<eSceneNames, SceneCstr> sceneDictionary = new Dictionary<eSceneNames, SceneCstr>() {
-        {eSceneNames.Main, new SceneCstr("","res://Scenes/10_Main.tscn", "Main", false) },
-        {eSceneNames.Level1, new SceneCstr("","res://Scenes/20_Level1.tscn", "Level One", true) },
-        {eSceneNames.Level2, new SceneCstr("","res://Scenes/30_Level2.tscn", "Level Two", true) },
+        {eSceneNames.Main, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/10_Main.tscn", "Main", false) },
+        {eSceneNames.Level1, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/20_Level1.tscn", "Level One", true) },
+        {eSceneNames.Level2, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/30_Level2.tscn", "Level Two", true) },
     };
 
     public static SceneManager instance;
