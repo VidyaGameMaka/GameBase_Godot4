@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://blmflkhkdhvn2"]
+
+[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/Sound.cs" id="1_5wq5x"]
+
+[node name="SoundSources_PFB" type="Node2D"]
+script = ExtResource("1_5wq5x")
+
+[node name="music_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="voice_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="male_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="female_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer1" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer7" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer8" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer9" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer10" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer11" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer12" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer13" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer14" type="AudioStreamPlayer" parent="."]
+
+[node name="sfx_AudioStreamPlayer15" type="AudioStreamPlayer" parent="."]

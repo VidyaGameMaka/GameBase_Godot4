@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 
+/[Bb]uild/
+/[Bb]uilds/
+
 # Godot-specific ignores
 .import/
 export.cfg
@@ -10,6 +13,7 @@ export_presets.cfg
 *.translation
 
 # Mono-specific ignores
+.vs/
 .mono/
 data_*/
 mono_crash.*.json
