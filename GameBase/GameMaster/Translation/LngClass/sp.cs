@@ -36,7 +36,11 @@ public class sp : Lng {
         videoMenu[3] = "Aplicar";
         #endregion
 
-
+        #region Example Dialogue
+        exampleDialogue[0] = new DiaCstr("Este es un ejemplo de dialogo.", "res://GameBase/Audio/Music/blanksound.wav");
+        exampleDialogue[1] = new DiaCstr("Puede especificar el texto para cada idioma.", "res://GameBase/Audio/Music/blanksound.wav");
+        exampleDialogue[2] = new DiaCstr("Asi como un archivo de voz diferente para cada idioma.", "res://GameBase/Audio/Music/blanksound.wav");
+        #endregion
     }
 
 }

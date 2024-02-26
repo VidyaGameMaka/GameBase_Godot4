@@ -7,7 +7,7 @@ public enum baseDicts {
     audioMenu = 20, 
     saveLoadMenu = 30, 
     videoMenu = 40, 
-    languages = 50
+    languages = 50,
 }
 
 public class Lng {
@@ -20,6 +20,7 @@ public class Lng {
     public static Dictionary<int, string> saveLoadMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> videoMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> languages = new Dictionary<int, string>();
+    public static Dictionary<int, DiaCstr> exampleDialogue = new Dictionary<int, DiaCstr>();
     #endregion
 
     public virtual void Run() => ImplementationRun();
