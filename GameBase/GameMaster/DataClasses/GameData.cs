@@ -17,7 +17,8 @@ public class GameData {
     public ScreenTypes screenType = ScreenTypes.Windowed;
 
     //Windowed Resolution Presets, Only Come into Effect when ScreenMode is Windowed.
-    //Godot does not change the resolution of the monitor when it goes FullScreen, it uses the resolution as-is.
+    //Godot does not change the resolution of the monitor when it goes FullScreen, it uses the screen's resolution as
+    //set by the operating system.
     public Dictionary<int, Vector2I> windowResolutions = new Dictionary<int, Vector2I>() {
         { 0, new Vector2I(480, 270) },
         { 1, new Vector2I(960, 540) },

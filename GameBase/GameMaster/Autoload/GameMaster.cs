@@ -187,7 +187,7 @@ public partial class GameMaster : Node {
     /// <param name="mySaveType"></param>
     /// <param name="slotNum"></param>
     private static void Save(SaveTypes mySaveType, int slotNum) {
-        //Don't save slot 0
+        //Slot 0 is reserved as the blank slot so don't save it.
         if (slotNum == 0) { return; }
 
         //Make the string path to the save file
@@ -218,6 +218,9 @@ public partial class GameMaster : Node {
     /// <param name="slotNum"></param>
     /// <param name="loadToSlot"></param>
     private static void Load(SaveTypes mySaveType, int slotNum, bool loadToSlot = false) {
+        //Slot 0 is reserved as the blank slot so don't load it.
+        if (slotNum == 0) { return; }
+
         //Create string to file path.
         string myFilePath = "user://" + mySaveType.ToString() + slotNum + ".sav";
 
@@ -293,6 +296,9 @@ public partial class GameMaster : Node {
         GD.Print("(GameMaster) ResetAllData - All Game Data Reset!");
     }
 
+    /// <summary>
+    /// Collects system messages to be displayed in-game.
+    /// </summary>
     public static string SystemMessages { get; private set; } = string.Empty;
 
     private static List<string> SystemMessageList = new List<string>();
@@ -306,5 +312,15 @@ public partial class GameMaster : Node {
 
         SystemMessages = String.Join("     ", SystemMessageList);
     }
+
+    public static void SetVideoOnQuit() {
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) { gameData.screenType = ScreenTypes.FullScreen; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized) { gameData.screenType= ScreenTypes.Maximized; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Windowed) { gameData.screenType = ScreenTypes.Windowed; }
+    }
+
+    
+
+
 
 }

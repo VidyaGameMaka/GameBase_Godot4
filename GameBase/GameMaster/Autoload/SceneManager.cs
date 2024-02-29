@@ -39,7 +39,6 @@ public partial class SceneManager : Node {
     public override void _Notification(int what) {
         if (what == NotificationWMCloseRequest) {
             GD.Print("(SceneManager) Quit Requested by Window Manager.");
-
             //Save the Current Game on SceneManager and Quit
             QuitGame();
         }
@@ -47,8 +46,13 @@ public partial class SceneManager : Node {
 
     //Save GameData and PlayerData then Quit
     public void QuitGame() {
+        GD.Print("(SceneManager) Save Window Settings from DisplayServer");
+        GameMaster.SetVideoOnQuit();
+
         GD.Print("(SceneManager) Saving and Quitting");
         GameMaster.FullSave();
+
+        //Done, Quit
         GetTree().Quit();
     }
 

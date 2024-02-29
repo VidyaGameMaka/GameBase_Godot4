@@ -15,11 +15,7 @@ public partial class VideoMenu : CanvasLayer {
 
     private int mySelectedRez = 0;
 
-    public override void _Ready() {
-        
-        //Show or Hide Buttons determined by screen state
-        CheckDisplayedButtons();
-
+    public override void _Ready() {       
         //Set Initial Value for the Window Label
         SetLabels();
 
@@ -27,16 +23,7 @@ public partial class VideoMenu : CanvasLayer {
         AddResolutionsToButton();
 	}
 
-    private void CheckDisplayedButtons() {     
-        //If Full Screen, then disable the resolution drop-down
-        //if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) {
-        //    windowedOptionsButton.Disabled = false;
-        //} else {
-        //    windowedOptionsButton.Disabled = true;
-        //}
-    }
-
-   
+  
     private void SetLabels() {
         if (GameMaster.gameData.screenType == ScreenTypes.Maximized) { screenTypeLabel.Text = Lng.videoMenu[1]; }
         if (GameMaster.gameData.screenType == ScreenTypes.FullScreen) { screenTypeLabel.Text = Lng.videoMenu[2]; }
@@ -73,32 +60,20 @@ public partial class VideoMenu : CanvasLayer {
         GameMaster.gameData.resolutionIndex = mySelectedRez;
         GameMaster.gameData.screenType = ScreenTypes.Windowed;
         GameMaster.ApplyGameDataVideoSettings();
-        CheckDisplayedButtons();
         SetLabels();
     }
 
     public void _on_maximized_button_button_up() {
         GameMaster.gameData.screenType = ScreenTypes.Maximized;
         GameMaster.ApplyGameDataVideoSettings();
-        CheckDisplayedButtons();
         SetLabels();
     }
 
     public void _on_fullscreen_button_button_up() {
         GameMaster.gameData.screenType = ScreenTypes.FullScreen;
         GameMaster.ApplyGameDataVideoSettings();
-        CheckDisplayedButtons();
         SetLabels();
     }
-
-
-    //public void _on_apply_button_button_up() {
-    //    GameMaster.gameData.resolutionIndex = mySelectedRez;
-    //    //Actual application of the Video Settins are in GameMaster so that the code is only written once and
-    //    //can be run at the start of the game when GameMaster initalizes on autoload
-    //    GameMaster.ApplyGameDataVideoSettings();
-    //}
-
 
     public void _on_back_button_button_up() {
         GameMaster.SaveGameData();
