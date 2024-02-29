@@ -31,9 +31,9 @@ public class en : Lng {
 
         //Video Menu
         videoMenu[0] = "Windowed";
-        videoMenu[1] = "Full Screen";
-        videoMenu[2] = "Resolution";
-        videoMenu[3] = "Apply";
+        videoMenu[1] = "Maximized";
+        videoMenu[2] = "Full Screen";
+        videoMenu[3] = "Window Size";
         #endregion
 
         #region Example Dialogue

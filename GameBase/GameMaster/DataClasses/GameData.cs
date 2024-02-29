@@ -2,13 +2,19 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum ScreenTypes {
+    Windowed = 10,
+    Maximized = 20,
+    FullScreen = 30,
+}
+
 public class GameData {  
 
     //The default resolution and also the resolution the user selected
     public int resolutionIndex = 3;
 
     //If true, run the game full screen
-    public bool isFullScreen = false;
+    public ScreenTypes screenType = ScreenTypes.Windowed;
 
     //Windowed Resolution Presets, Only Come into Effect when ScreenMode is Windowed.
     //Godot does not change the resolution of the monitor when it goes FullScreen, it uses the resolution as-is.

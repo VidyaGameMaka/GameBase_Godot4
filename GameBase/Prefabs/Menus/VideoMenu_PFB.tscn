@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/VideoMenu.cs" id="1_l847q"]
 
-[node name="VideoMenu_PFB" type="CanvasLayer" node_paths=PackedStringArray("winLabel", "winCheckButton", "resLabel", "resOptionsButton", "applyButton", "backButton")]
+[node name="VideoMenu_PFB" type="CanvasLayer" node_paths=PackedStringArray("screenTypeLabel", "windowSizeLabel", "maxBtn", "fullBtn", "windowedOptionsButton", "backButton")]
 script = ExtResource("1_l847q")
-winLabel = NodePath("Control/winLabel")
-winCheckButton = NodePath("Control/winCheckButton")
-resLabel = NodePath("Control/resolutionLabel")
-resOptionsButton = NodePath("Control/resOptionsButton")
-applyButton = NodePath("Control/applyButton")
+screenTypeLabel = NodePath("Control/screenTypeLabel")
+windowSizeLabel = NodePath("Control/windowSizeLabel")
+maxBtn = NodePath("Control/maximizedButton")
+fullBtn = NodePath("Control/fullscreenButton")
+windowedOptionsButton = NodePath("Control/windowedOptionsButton")
 backButton = NodePath("Control/backButton")
 
 [node name="Control" type="Control" parent="."]
@@ -19,37 +19,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="winLabel" type="Label" parent="Control"]
+[node name="screenTypeLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 111.0
 offset_bottom = 26.0
-text = "Window Mode"
+text = "Screen Type"
 
-[node name="winCheckButton" type="CheckButton" parent="Control"]
+[node name="maximizedButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_top = 25.0
-offset_right = 44.0
-offset_bottom = 49.0
+offset_top = 29.0
+offset_right = 92.0
+offset_bottom = 60.0
+text = "Maximized"
 
-[node name="resolutionLabel" type="Label" parent="Control"]
+[node name="fullscreenButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_top = 56.0
+offset_left = 112.0
+offset_top = 29.0
+offset_right = 204.0
+offset_bottom = 60.0
+text = "Full Screen"
+
+[node name="windowSizeLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 63.0
 offset_right = 111.0
-offset_bottom = 82.0
-text = "Resolution"
+offset_bottom = 89.0
+text = "Window Size"
 
-[node name="resOptionsButton" type="OptionButton" parent="Control"]
+[node name="windowedOptionsButton" type="OptionButton" parent="Control"]
 layout_mode = 0
-offset_top = 85.0
+offset_top = 90.0
 offset_right = 125.0
-offset_bottom = 105.0
-
-[node name="applyButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_top = 120.0
-offset_right = 52.0
-offset_bottom = 151.0
-text = "Apply"
+offset_bottom = 110.0
+allow_reselect = true
 
 [node name="backButton" type="Button" parent="Control"]
 layout_mode = 0
@@ -59,7 +62,7 @@ offset_right = 470.0
 offset_bottom = 265.0
 text = "Back"
 
-[connection signal="toggled" from="Control/winCheckButton" to="." method="_on_windowmode_check_button_toggled"]
-[connection signal="item_selected" from="Control/resOptionsButton" to="." method="_on_resolution_options_button_item_selected"]
-[connection signal="button_up" from="Control/applyButton" to="." method="_on_apply_button_button_up"]
+[connection signal="button_up" from="Control/maximizedButton" to="." method="_on_maximized_button_button_up"]
+[connection signal="button_up" from="Control/fullscreenButton" to="." method="_on_fullscreen_button_button_up"]
+[connection signal="item_selected" from="Control/windowedOptionsButton" to="." method="_on_windowed_options_button_item_selected"]
 [connection signal="button_up" from="Control/backButton" to="." method="_on_back_button_button_up"]

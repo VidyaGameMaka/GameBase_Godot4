@@ -75,11 +75,16 @@ public partial class GameMaster : Node {
         int currentScreen = DisplayServer.WindowGetCurrentScreen();
 
         //Make full screen on the monitor the window is on
-        if (gameData.isFullScreen == true) {
+        if (gameData.screenType == ScreenTypes.FullScreen) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen, currentScreen);
         }
 
-        if (gameData.isFullScreen == false) {
+        if (gameData.screenType == ScreenTypes.Maximized) {
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized, currentScreen);
+        }
+        
+
+        if (gameData.screenType == ScreenTypes.Windowed) {
             //Make window mode on the monitor the window is on
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed, currentScreen);
 
