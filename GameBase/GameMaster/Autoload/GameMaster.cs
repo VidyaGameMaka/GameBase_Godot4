@@ -319,8 +319,5 @@ public partial class GameMaster : Node {
         if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Windowed) { gameData.screenType = ScreenTypes.Windowed; }
     }
 
-    
-
-
 
 }

@@ -41,6 +41,7 @@ public partial class MainMenu : Node2D {
 		}
 	}
 
+	//Quit Button
     public void _on_quit_button_button_up() {
         SceneManager.instance.QuitGame();
     }
