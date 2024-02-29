@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameMaster : Node {
 
@@ -285,6 +286,20 @@ public partial class GameMaster : Node {
         DeletePlayerData(3);
 
         GD.Print("(GameMaster) ResetAllData - All Game Data Reset!");
+    }
+
+    public static string SystemMessages { get; private set; } = string.Empty;
+
+    private static List<string> SystemMessageList = new List<string>();
+    public static void Log(string myInput) {
+        GD.Print(myInput);
+
+        if (SystemMessageList.Count > 15) { SystemMessageList.RemoveAt(1); }
+        if (SystemMessageList.Count == 0) { SystemMessageList.Add("System Messages:"); }
+
+        SystemMessageList.Add("(" + myInput + ")");
+
+        SystemMessages = String.Join("     ", SystemMessageList);
     }
 
 }
