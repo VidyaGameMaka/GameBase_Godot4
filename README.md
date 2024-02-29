@@ -5,7 +5,8 @@ Download the ZIP from this repository and extract it to where you want your game
 Rename the folder to a name that you desire then import the project.godot file into godot 4.  
 
 # This package offers the following features:  
-* Save system for Game System options (gameData)  
+* Save system for Game System options (gameData)
+* Automatically saves game and player data on quit button or from OS window manager  
 * Multiple Slot Save System (playerData)  
 * Multiple Channel Audio System (Master, Music, Voice, Male, Female)  
 * Video system with resolution changing and fullscreen and windowed mode with automatic centering  
