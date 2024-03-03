@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://d2jge6naks7l6"]
+[gd_scene load_steps=2 format=3 uid="uid://d2jge6naks7l6"]
+
+[ext_resource type="Script" path="res://GameBase/UI/ButtonChangeScene.cs" id="1_nekvy"]
 
 [node name="20Level1" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "20_Level 1"
+
+[node name="Button" type="Button" parent="."]
+offset_top = 48.0
+offset_right = 45.0
+offset_bottom = 79.0
+text = "Back to Main"
+script = ExtResource("1_nekvy")
+myScene = 10
+
+[node name="Level2Button" type="Button" parent="."]
+offset_left = 142.0
+offset_top = 6.0
+offset_right = 260.0
+offset_bottom = 37.0
+text = "Goto Level 2"
+script = ExtResource("1_nekvy")
+myScene = 30
+
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
+[connection signal="button_up" from="Level2Button" to="Level2Button" method="_on_button_up"]

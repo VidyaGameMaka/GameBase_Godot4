@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://dv5r3ulk4ryyk"]
 
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/MainMenu.cs" id="1_f5bin"]
-[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="1_mt5yv"]
-[ext_resource type="PackedScene" uid="uid://damoa1si6ve1e" path="res://GameBase/Prefabs/Menus/SaveLoadDeleteMenu_PFB.tscn" id="2_5aipc"]
-[ext_resource type="PackedScene" uid="uid://bnbilflc6abgg" path="res://GameBase/Prefabs/Menus/AudioMenu_PFB.tscn" id="3_l0kny"]
-[ext_resource type="PackedScene" uid="uid://boilmx0svyvb7" path="res://GameBase/Prefabs/Menus/VideoMenu_PFB.tscn" id="4_4qmb1"]
+[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/MainMenu.cs" id="1_3xp18"]
+[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_lcnvi"]
+[ext_resource type="PackedScene" uid="uid://damoa1si6ve1e" path="res://GameBase/Prefabs/Menus/SaveLoadDeleteMenu_PFB.tscn" id="3_jj4y2"]
+[ext_resource type="PackedScene" uid="uid://boilmx0svyvb7" path="res://GameBase/Prefabs/Menus/VideoMenu_PFB.tscn" id="4_etc8r"]
+[ext_resource type="PackedScene" uid="uid://bnbilflc6abgg" path="res://GameBase/Prefabs/Menus/AudioMenu_PFB.tscn" id="5_6iymc"]
 
 [node name="10_Main" type="Node2D" node_paths=PackedStringArray("canvasLayers", "startButton", "audioButton", "videoButton", "quitButton")]
-script = ExtResource("1_f5bin")
+script = ExtResource("1_3xp18")
 canvasLayers = [NodePath("MainMenu"), NodePath("SaveLoadQuitMenu"), NodePath("AudioMenu"), NodePath("VideoMenu_PFB")]
 startButton = NodePath("MainMenu/Control/StartButton")
 audioButton = NodePath("MainMenu/Control/AudioButton")
 videoButton = NodePath("MainMenu/Control/VideoButton")
 quitButton = NodePath("MainMenu/Control/QuitButton")
 
-[node name="RequiredSceneComponents" parent="." instance=ExtResource("1_mt5yv")]
+[node name="RequiredSceneComponents" parent="." instance=ExtResource("2_lcnvi")]
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 
@@ -86,13 +86,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
-[node name="SaveLoadQuitMenu" parent="." instance=ExtResource("2_5aipc")]
+[node name="SaveLoadQuitMenu" parent="." instance=ExtResource("3_jj4y2")]
 visible = false
 
-[node name="VideoMenu_PFB" parent="." instance=ExtResource("4_4qmb1")]
+[node name="VideoMenu_PFB" parent="." instance=ExtResource("4_etc8r")]
 visible = false
 
-[node name="AudioMenu" parent="." instance=ExtResource("3_l0kny")]
+[node name="AudioMenu" parent="." instance=ExtResource("5_6iymc")]
 visible = false
 
 [connection signal="button_up" from="MainMenu/Control/StartButton" to="." method="ShowLayer" binds= [1]]

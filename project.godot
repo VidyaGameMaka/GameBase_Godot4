@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Base Godot 4"
-run/main_scene="res://Scenes/10_main.tscn"
+run/main_scene="res://Scenes/10_Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 

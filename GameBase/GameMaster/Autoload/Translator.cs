@@ -12,7 +12,7 @@ public partial class Translator : Node {
 	}
 
     public void ChangeLanguage() {
-        switch (GameMaster.gameData.language) {
+        switch (GameMaster.rGameData.language) {
             case Languages.en:
                 rLng = new en();
                 break;
@@ -25,7 +25,7 @@ public partial class Translator : Node {
 
         rLng.Run();
 
-        GD.Print("(Translator) Language Selected: " + GameMaster.gameData.language);
+        GD.Print("(Translator) Language Selected: " + GameMaster.rGameData.language);
         GD.Print("(Translator) Test: " + Lng.tester);
 
     }

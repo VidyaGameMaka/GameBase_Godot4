@@ -21,14 +21,11 @@ public partial class GameMaster : Node {
 
     public static bool showDebuggingMessages = true;
 
-    //Base Player Data
-    public static PlayerData playerData = new PlayerData();
+    //Runtime Player Data - The PlayerData object the game will actually use during gameplay.
+    public static PlayerData rPlayerData = new PlayerData();
 
-    //Runtime Player Data - The Player Data object the game will actually use during gameplay.
-    public static PlayerData runPlayerData = new PlayerData();
-
-    //Game Data
-    public static GameData gameData = new GameData();
+    //Rumtime Game Data - The GameData object the game will actually use during gamplay
+    public static GameData rGameData = new GameData();
 
     //Data Types Enum
     public enum SaveTypes { playerDat, gameDat }
@@ -75,22 +72,22 @@ public partial class GameMaster : Node {
         int currentScreen = DisplayServer.WindowGetCurrentScreen();
 
         //Make full screen on the monitor the window is on
-        if (gameData.screenType == ScreenTypes.FullScreen) {
+        if (rGameData.screenType == ScreenTypes.FullScreen) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen, currentScreen);
         }
 
-        if (gameData.screenType == ScreenTypes.Maximized) {
+        if (rGameData.screenType == ScreenTypes.Maximized) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized, currentScreen);
         }
         
 
-        if (gameData.screenType == ScreenTypes.Windowed) {
+        if (rGameData.screenType == ScreenTypes.Windowed) {
             //Make window mode on the monitor the window is on
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed, currentScreen);
 
             //Use gameData ResolutionIndex to find the resolution that is currently set.
             //This will return a Vector2I That WindowSetSize is expecting.
-            Vector2I currentRez = gameData.windowResolutions[gameData.resolutionIndex];
+            Vector2I currentRez = rGameData.windowResolutions[rGameData.resolutionIndex];
             DisplayServer.WindowSetSize(currentRez);
 
             //Center window on current screen.            
@@ -117,12 +114,12 @@ public partial class GameMaster : Node {
 
     //Apply Bus settings from gameData to each Audio Channel
     private static void ApplyGameDataAudioSettings() {
-        AudioServer.SetBusVolumeDb(master_index, Mathf.LinearToDb(gameData.masterVolume));
-        AudioServer.SetBusVolumeDb(music_index, Mathf.LinearToDb(gameData.musicVolume));
-        AudioServer.SetBusVolumeDb(sfx_index, Mathf.LinearToDb(gameData.sfxVolume));
-        AudioServer.SetBusVolumeDb(voice_index, Mathf.LinearToDb(gameData.voiceVolume));
-        AudioServer.SetBusVolumeDb(male_index, Mathf.LinearToDb(gameData.maleVolume));
-        AudioServer.SetBusVolumeDb(female_index, Mathf.LinearToDb(gameData.femaleVolume));
+        AudioServer.SetBusVolumeDb(master_index, Mathf.LinearToDb(rGameData.masterVolume));
+        AudioServer.SetBusVolumeDb(music_index, Mathf.LinearToDb(rGameData.musicVolume));
+        AudioServer.SetBusVolumeDb(sfx_index, Mathf.LinearToDb(rGameData.sfxVolume));
+        AudioServer.SetBusVolumeDb(voice_index, Mathf.LinearToDb(rGameData.voiceVolume));
+        AudioServer.SetBusVolumeDb(male_index, Mathf.LinearToDb(rGameData.maleVolume));
+        AudioServer.SetBusVolumeDb(female_index, Mathf.LinearToDb(rGameData.femaleVolume));
     }
 
     /// <summary>
@@ -142,18 +139,17 @@ public partial class GameMaster : Node {
     /// </summary>
     /// <param name="mySlot"></param>
     public static void LoadRunPlayerData(int mySlot) {
-        if (mySlot == 1) { runPlayerData = loadedPlayerDataSlot1; }
-        if (mySlot == 2) { runPlayerData = loadedPlayerDataSlot1; }
-        if (mySlot == 3) { runPlayerData = loadedPlayerDataSlot1; }
+        if (mySlot == 1) { rPlayerData = loadedPlayerDataSlot1; }
+        if (mySlot == 2) { rPlayerData = loadedPlayerDataSlot1; }
+        if (mySlot == 3) { rPlayerData = loadedPlayerDataSlot1; }
     }
 
     /// <summary>
     /// Resets the Runtime player data object to default values.
     /// </summary>
     public static void ClearRunPlayerData() {
-        runPlayerData = new PlayerData();
+        rPlayerData = new PlayerData();
     }
-
 
     //Simplified Player Data Methods
     /// <summary>
@@ -201,10 +197,10 @@ public partial class GameMaster : Node {
 
         //Convert Entire Class to Json String using NewtonSoft.Json
         if (mySaveType == SaveTypes.playerDat) {
-            jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(playerData);
+            jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(rPlayerData);
         }
         if (mySaveType == SaveTypes.gameDat) {
-            jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(gameData);
+            jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(rGameData);
         }
 
         //Write String to File
@@ -239,15 +235,29 @@ public partial class GameMaster : Node {
 
         if (mySaveType == SaveTypes.playerDat) {
             if (loadToSlot == false) {
-                Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, playerData);
+                Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, rPlayerData);
             } else {
-                if (slotNum == 1) { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot1); }
-                if (slotNum == 2) { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot2); }
-                if (slotNum == 3) { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot3); }
+                if (slotNum == 1) {
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot1); }
+                    catch { loadedPlayerDataSlot1 = new PlayerData(); }                
+                }
+                if (slotNum == 2) {
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot2); }
+                    catch { loadedPlayerDataSlot2 = new PlayerData(); }
+                    
+                }
+                if (slotNum == 3) {
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot3); }
+                    catch { loadedPlayerDataSlot3 = new PlayerData(); }
+                }
             }
         }
 
-        if (mySaveType == SaveTypes.gameDat) { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, gameData); }
+        if (mySaveType == SaveTypes.gameDat) {
+            try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, rGameData); }
+            catch { rGameData = new GameData(); }           
+        }
+
     }
 
     /// <summary>
@@ -276,12 +286,12 @@ public partial class GameMaster : Node {
     /// <param name="slotNum"></param>
     private static void initializeSlots(SaveTypes mySaveType, int slotNum) {
         if (mySaveType == SaveTypes.playerDat) {
-            if (slotNum == 0) { playerData = new PlayerData(); }
+            if (slotNum == 0) { rPlayerData = new PlayerData(); }
             if (slotNum == 1) { loadedPlayerDataSlot1 = new PlayerData(); SavePlayerData(slotNum); }
             if (slotNum == 2) { loadedPlayerDataSlot2 = new PlayerData(); SavePlayerData(slotNum); }
             if (slotNum == 3) { loadedPlayerDataSlot3 = new PlayerData(); SavePlayerData(slotNum); }
         }
-        if (mySaveType == SaveTypes.gameDat) { gameData = new GameData(); SaveGameData(); }
+        if (mySaveType == SaveTypes.gameDat) { rGameData = new GameData(); SaveGameData(); }
     }
 
     /// <summary>
@@ -314,9 +324,9 @@ public partial class GameMaster : Node {
     }
 
     public static void SetVideoOnQuit() {
-        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) { gameData.screenType = ScreenTypes.FullScreen; }
-        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized) { gameData.screenType= ScreenTypes.Maximized; }
-        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Windowed) { gameData.screenType = ScreenTypes.Windowed; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) { rGameData.screenType = ScreenTypes.FullScreen; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized) { rGameData.screenType= ScreenTypes.Maximized; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Windowed) { rGameData.screenType = ScreenTypes.Windowed; }
     }
 
 

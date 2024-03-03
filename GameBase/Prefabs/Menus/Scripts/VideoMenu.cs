@@ -25,8 +25,8 @@ public partial class VideoMenu : CanvasLayer {
 
   
     private void SetLabels() {
-        if (GameMaster.gameData.screenType == ScreenTypes.Maximized) { screenTypeLabel.Text = Lng.videoMenu[1]; }
-        if (GameMaster.gameData.screenType == ScreenTypes.FullScreen) { screenTypeLabel.Text = Lng.videoMenu[2]; }
+        if (GameMaster.rGameData.screenType == ScreenTypes.Maximized) { screenTypeLabel.Text = Lng.videoMenu[1]; }
+        if (GameMaster.rGameData.screenType == ScreenTypes.FullScreen) { screenTypeLabel.Text = Lng.videoMenu[2]; }
 
         windowSizeLabel.Text = Lng.videoMenu[3]; //"Window Size";      
         backButton.Text = Lng.mainMenu[4]; //back
@@ -34,16 +34,16 @@ public partial class VideoMenu : CanvasLayer {
 
     private void AddResolutionsToButton() {
         //Add the current resolution to the top of the list.
-        Vector2I currentRez = GameMaster.gameData.windowResolutions[GameMaster.gameData.resolutionIndex];
+        Vector2I currentRez = GameMaster.rGameData.windowResolutions[GameMaster.rGameData.resolutionIndex];
         string currentString = currentRez.X + "x" + currentRez.Y;
-        windowedOptionsButton.AddItem(currentString, GameMaster.gameData.resolutionIndex);
+        windowedOptionsButton.AddItem(currentString, GameMaster.rGameData.resolutionIndex);
 
         //Iterate through each entry in resolutionList array and add them as strings to the button       
         //List of Resolutions is stored in GameData.cs
-        foreach (var item in GameMaster.gameData.windowResolutions) {
+        foreach (var item in GameMaster.rGameData.windowResolutions) {
 
             //Only add resolutions to the rest of the button if they are not the current res
-            if (item.Key != GameMaster.gameData.resolutionIndex) {
+            if (item.Key != GameMaster.rGameData.resolutionIndex) {
                 string myString = item.Value.X + "x" + item.Value.Y;
                 windowedOptionsButton.AddItem(myString, item.Key);
             }
@@ -57,20 +57,20 @@ public partial class VideoMenu : CanvasLayer {
         int myID = windowedOptionsButton.GetItemId(myInt);
         mySelectedRez = myID;
 
-        GameMaster.gameData.resolutionIndex = mySelectedRez;
-        GameMaster.gameData.screenType = ScreenTypes.Windowed;
+        GameMaster.rGameData.resolutionIndex = mySelectedRez;
+        GameMaster.rGameData.screenType = ScreenTypes.Windowed;
         GameMaster.ApplyGameDataVideoSettings();
         SetLabels();
     }
 
     public void _on_maximized_button_button_up() {
-        GameMaster.gameData.screenType = ScreenTypes.Maximized;
+        GameMaster.rGameData.screenType = ScreenTypes.Maximized;
         GameMaster.ApplyGameDataVideoSettings();
         SetLabels();
     }
 
     public void _on_fullscreen_button_button_up() {
-        GameMaster.gameData.screenType = ScreenTypes.FullScreen;
+        GameMaster.rGameData.screenType = ScreenTypes.FullScreen;
         GameMaster.ApplyGameDataVideoSettings();
         SetLabels();
     }

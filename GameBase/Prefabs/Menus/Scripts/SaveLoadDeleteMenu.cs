@@ -91,37 +91,33 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
     private void UpdateInfoLabels() {
         infoLabel1.Text = "New file: " + GameMaster.loadedPlayerDataSlot1.newFile.ToString() + "     ";
         infoLabel1.Text += "Scene: " + GameMaster.loadedPlayerDataSlot1.savedScene.ToString() + "     ";
-        infoLabel1.Text += "Test: " + GameMaster.loadedPlayerDataSlot1.sampleDictionary["test"];
-
 
         infoLabel2.Text = "New file: " + GameMaster.loadedPlayerDataSlot2.newFile.ToString() + "     ";
         infoLabel2.Text += "Scene: " + GameMaster.loadedPlayerDataSlot2.savedScene.ToString() + "     ";
-        infoLabel2.Text += "Test: " + GameMaster.loadedPlayerDataSlot2.sampleDictionary["test"];
-
 
         infoLabel3.Text = "New file: " + GameMaster.loadedPlayerDataSlot3.newFile.ToString() + "     ";
         infoLabel3.Text += "Scene: " + GameMaster.loadedPlayerDataSlot3.savedScene.ToString() + "     ";
-        infoLabel3.Text += "Test: " + GameMaster.loadedPlayerDataSlot3.sampleDictionary["test"];
     }
 
 
     public void _on_new_load_button_up(int myInt) {
+        GD.Print("Pressed newload" + myInt);
+        
         GameMaster.currentSlotNum = myInt;
 
         if (myInt == 1) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlot1;
+            GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot1;
         }
         if (myInt == 2) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlot2;
+            GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot2;
         }
         if (myInt == 3) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlot3;
+            GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot3;
         }
 
-        GameMaster.playerData.newFile = false;
-        GameMaster.playerData.saveFileVersion = GameMaster.gameVersion;
-        GameMaster.FullSave();
-        SceneManager.instance.ChangeScene(GameMaster.playerData.savedScene);
+        GameMaster.rPlayerData.newFile = false;
+        GameMaster.rPlayerData.saveFileVersion = GameMaster.gameVersion;
+        SceneManager.instance.ChangeScene(GameMaster.rPlayerData.savedScene);
     }
 
    public void _on_delete_button_up(int myInt) {

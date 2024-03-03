@@ -6,14 +6,16 @@
 /// pauseAllowed = Can the game be paused in this scene?
 /// </summary>
 public class SceneCstr {
-    public SceneCstr(string path, string musicPath, string prettyName, bool pauseAllowed) {
+    public SceneCstr(string path, string musicPath, string prettyName, bool saveAllowed, bool pauseAllowed) {
         this.path = path;
-        this.prettyName = prettyName;
-        this.pauseAllowed = pauseAllowed;
         this.musicPath = musicPath;
+        this.prettyName = prettyName;
+        this.saveAllowed = saveAllowed;
+        this.pauseAllowed = pauseAllowed;        
     }
     public string path;
     public string musicPath;
     public string prettyName;
     public bool pauseAllowed;
+    public bool saveAllowed;
 }

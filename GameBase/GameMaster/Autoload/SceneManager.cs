@@ -14,9 +14,9 @@ public partial class SceneManager : Node {
     /// Scene Enum, Scene Path, Pretty Scene Name, pauseAllowed
     /// </summary>
     public Dictionary<eSceneNames, SceneCstr> sceneDictionary = new Dictionary<eSceneNames, SceneCstr>() {
-        {eSceneNames.Main, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/10_Main.tscn", "Main", false) },
-        {eSceneNames.Level1, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/20_Level1.tscn", "Level One", true) },
-        {eSceneNames.Level2, new SceneCstr("res://GameBase/Audio/Music/blanksound.wav","res://Scenes/30_Level2.tscn", "Level Two", true) },
+        {eSceneNames.Main, new SceneCstr("res://Scenes/10_Main.tscn", "res://GameBase/Audio/Music/blanksound.wav", "Main", false, false) },
+        {eSceneNames.Level1, new SceneCstr("res://Scenes/20_Level1.tscn", "res://GameBase/Audio/Music/blanksound.wav", "Level One", true, true) },
+        {eSceneNames.Level2, new SceneCstr("res://Scenes/30_Level2.tscn", "res://GameBase/Audio/Music/blanksound.wav", "Level Two", true, true) },
     };
 
     public static SceneManager instance;
@@ -28,11 +28,28 @@ public partial class SceneManager : Node {
         GD.Print("(SceneManager) SceneManager Ready");
     }
 
-    public void ChangeScene(eSceneNames mySceneName) {
+    public void ChangeScene(eSceneNames mySceneName) {        
         string myPath = sceneDictionary[mySceneName].path;
+
+        //Set pause allowed to match scene we're switching to
         GameMaster.pauseAllowed = sceneDictionary[mySceneName].pauseAllowed;
-        GameMaster.playerData.savedScene = mySceneName;
+
+        
+
+        //If the scene being switched to is allowed to be saved, update the savedScene on rPlayerData
+        if (sceneDictionary[mySceneName].saveAllowed == true) {
+            GameMaster.rPlayerData.savedScene = mySceneName;
+        }
+        
+        //Change scene
         GetTree().ChangeSceneToFile(myPath);
+        GD.Print("Changed to Scene: " + myPath);
+        GD.Print("Pause allowed: " + sceneDictionary[mySceneName].pauseAllowed);
+        GD.Print("Save Allowed: " + sceneDictionary[mySceneName].saveAllowed);
+
+
+        //Save Data
+        GameMaster.FullSave();
     }
 
     //Receive notification from the Operating System's Window Manager
