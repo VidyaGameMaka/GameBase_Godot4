@@ -40,7 +40,7 @@ This is the location of the default audio bus. This should not be changed unless
 I selected Nearest for pixel art. Change this value to suit the game you want to make.  
 * Project -> Assembly Name  (I recommend against changing this value as it may cause the project to no longer function without changes made to the new solution file.)  
 
-# Usage
+# Usage (Save/Load/Delete)  
 
 Player data has 3 save slots. This can be increased by editing GameMaster.cs  
 An example of Save/Load/Delete is located in: res://GameBase/Prefabs/Menus/Scripts/SaveLoadDeleteMenu.cs  
