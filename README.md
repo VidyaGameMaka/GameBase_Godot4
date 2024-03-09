@@ -40,6 +40,6 @@ To load rPlayerData for the current slot.  Example for Slot #1:
 * GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot1;  
 
 ## Delete Game:  
-* GameMaster.DeletePlayerData(myInt);
+* GameMaster.DeletePlayerData(myInt);  
 Call GameMaster.DeletePlayerData and replace myInt with the slot you want to erase.  
 Note that GameMaster does not actually delete files from the filesystem. Instead it replaces the "deleted" slot with a blank copy of (res://GameBase/GameMaster/DataClasses/PlayerData.cs)  
