@@ -33,9 +33,9 @@ An example of Save/Load/Delete is located in: res://GameBase/Prefabs/Menus/Scrip
 The recommended method is to use: GameMaster.FullSave();  
 This will save your game's system data (GameMaster.rGameData) as well as the current runtime data (GameMaster.rPlayerData)  
 
-## Load Game:
+## Load Game:  
 GameMaster.rGameData is automatically loaded when the game starts, no action is required to load this.  
-To load rPlayerData for the current slot.  Example for Slot #1:
+To load rPlayerData for the current slot.  Example for Slot #1:  
 * GameMaster.currentSlotNum = 1;  
 * GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot1;  
 
