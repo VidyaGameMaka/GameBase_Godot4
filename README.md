@@ -24,7 +24,7 @@ Everything required to run this project is included in this repository.  Be sure
 3: After downloading the ZIP file, right click and choose Extract All. Choose the default options and it will create a folder with the entire project inside of it.  You can rename the root folder (GameBase_Godot4) to anything that you like.  
 4: Open Godot 4 then click the import button. Navigate to the folder that has project.godot in it. Then click Open then Import & Edit.  
 
-# Customization
+# Default New Project Changes  
 Once this project has been setup on your computer. You can customize and change any settings as you desire. I set up this project mostly for 2D pixel art. But it can be used for any type of game.  
 Open Project Settings by clicking on the Project Menu then on Project Settings.  
 The following settings have been changed from the default Godot new project settings:  
