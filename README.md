@@ -1,10 +1,10 @@
-# Godot 4 C# GameBase
+# Godot 4 C# GameBase for Godot 4.2.1 Mono
 
 An out-of-the box starting point for new Godot 4 C# games.  
 Download the ZIP from this repository and extract it to where you want your game to be located.  
 Rename the folder to a name that you desire then import the project.godot file into godot 4.  
 
-# This package offers the following features:  
+# This project offers the following features:  
 * Save system for Game System options (gameData)
 * Automatically saves game and player data on quit button or from OS window manager  
 * Multiple Slot Save System (playerData)  
@@ -16,3 +16,29 @@ Rename the folder to a name that you desire then import the project.godot file i
   * Video Menu  
   * Audio Menu  
   * Save / Load / Delete Game Menu  
+
+# Installation  
+Everything required to run this project is included in this repository.  Be sure to use the Mono Version of Godot 4.2.1 or better to use this project.  
+1: Click on the green code button and download as a zip file. You may also use a GIT client to clone the repository if you desire but I recommend setting up your own repository for your own game.  
+2: Choose a location on your computer where you will store your game projects such as C:\Godot4Projects. I recommend storing your Godot Project on another drive if possible and to back up your work using GIT.  
+3: After downloading the ZIP file, right click and choose Extract All. Choose the default options and it will create a folder with the entire project inside of it.  
+4: Open Godot 4 then click the import button. Navigate to the folder that has project.godot in it. Then click Open then Import & Edit.  
+
+# Usage
+
+Player data has 3 save slots. This can be increased by editing GameMaster.cs  
+An example of Save/Load/Delete is located in: res://GameBase/Prefabs/Menus/Scripts/SaveLoadDeleteMenu.cs  
+
+## Save Game:  
+The recommended method is to use: GameMaster.FullSave();  
+This will save your game's system data (GameMaster.rGameData) as well as the current runtime data (GameMaster.rPlayerData)  
+
+## Load Game:
+GameMaster.rGameData is automatically loaded when the game starts, no action is required to load this.  
+To load rPlayerData for the current slot.  Example for Slot #1:
+* GameMaster.currentSlotNum = 1;  
+* GameMaster.rPlayerData = GameMaster.loadedPlayerDataSlot1;  
+
+## Delete Game:  
+* GameMaster.DeletePlayerData(myInt);  //Call GameMaster.DeletePlayerData and replace myInt with the slot you want to erase.  
+Note that GameMaster does not actually delete files from the filesystem. Instead it replaces the "deleted" slot with a blank copy of (res://GameBase/GameMaster/DataClasses/PlayerData.cs)  
