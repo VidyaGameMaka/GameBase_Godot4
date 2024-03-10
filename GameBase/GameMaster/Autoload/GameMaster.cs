@@ -10,6 +10,7 @@ public partial class GameMaster : Node {
     public static string gameVersion = "0.1.1 Build Date: 2/25/2024";
 
     //PlayerData: The slot number that the game will save and load to by default
+    //Slot 0 is the "default" slot but is reserved for debugging only and will not save to file.
     public static int currentSlotNum = 0;
 
     //GameData: The slot number that the game will save and load to by default
@@ -35,6 +36,15 @@ public partial class GameMaster : Node {
     public static PlayerData loadedPlayerDataSlot2 = new PlayerData();
     public static PlayerData loadedPlayerDataSlot3 = new PlayerData();
 
+    //(ExtraSlots) Uncomment these lines to enable additional save slots
+    //public static PlayerData loadedPlayerDataSlot4 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot5 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot6 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot7 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot8 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot9 = new PlayerData();
+    //public static PlayerData loadedPlayerDataSlot10 = new PlayerData();
+
     //Audio Bus Indexes
     public static int master_index, music_index, sfx_index, voice_index, male_index, female_index;
 
@@ -54,6 +64,15 @@ public partial class GameMaster : Node {
         LoadPlayerDataSlot(1);
         LoadPlayerDataSlot(2);
         LoadPlayerDataSlot(3);
+
+        //(ExtraSlots) Uncomment these lines to enable additional save slots
+        //LoadPlayerDataSlot(4);
+        //LoadPlayerDataSlot(5);
+        //LoadPlayerDataSlot(6);
+        //LoadPlayerDataSlot(7);
+        //LoadPlayerDataSlot(8);
+        //LoadPlayerDataSlot(9);
+        //LoadPlayerDataSlot(10);
 
         //Apply GameData Video Settings on Game Start
         ApplyGameDataVideoSettings();
@@ -79,7 +98,7 @@ public partial class GameMaster : Node {
         if (rGameData.screenType == ScreenTypes.Maximized) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized, currentScreen);
         }
-        
+
 
         if (rGameData.screenType == ScreenTypes.Windowed) {
             //Make window mode on the monitor the window is on
@@ -93,8 +112,8 @@ public partial class GameMaster : Node {
             //Center window on current screen.            
             Vector2I currentWinSize = DisplayServer.ScreenGetSize(currentScreen);
             DisplayServer.WindowSetPosition(new Vector2I(
-                currentWinSize.X/2 - currentRez.X /2,
-                currentWinSize.Y/ 2 - currentRez.Y / 2),
+                currentWinSize.X / 2 - currentRez.X / 2,
+                currentWinSize.Y / 2 - currentRez.Y / 2),
                 currentScreen);
         }
 
@@ -103,7 +122,7 @@ public partial class GameMaster : Node {
     }
 
     //Assign Bus Indexes
-    private void SetupAudioBusIndexes() {        
+    private void SetupAudioBusIndexes() {
         master_index = AudioServer.GetBusIndex("Master");
         music_index = AudioServer.GetBusIndex("Music");
         sfx_index = AudioServer.GetBusIndex("SFX");
@@ -140,8 +159,17 @@ public partial class GameMaster : Node {
     /// <param name="mySlot"></param>
     public static void LoadRunPlayerData(int mySlot) {
         if (mySlot == 1) { rPlayerData = loadedPlayerDataSlot1; }
-        if (mySlot == 2) { rPlayerData = loadedPlayerDataSlot1; }
-        if (mySlot == 3) { rPlayerData = loadedPlayerDataSlot1; }
+        if (mySlot == 2) { rPlayerData = loadedPlayerDataSlot2; }
+        if (mySlot == 3) { rPlayerData = loadedPlayerDataSlot3; }
+
+        //(ExtraSlots) Uncomment these lines to enable additional save slots
+        //if (mySlot == 4) { rPlayerData = loadedPlayerDataSlot4; }
+        //if (mySlot == 5) { rPlayerData = loadedPlayerDataSlot5; }
+        //if (mySlot == 6) { rPlayerData = loadedPlayerDataSlot6; }
+        //if (mySlot == 7) { rPlayerData = loadedPlayerDataSlot7; }
+        //if (mySlot == 8) { rPlayerData = loadedPlayerDataSlot8; }
+        //if (mySlot == 9) { rPlayerData = loadedPlayerDataSlot9; }
+        //if (mySlot == 10) { rPlayerData = loadedPlayerDataSlot10; }
     }
 
     /// <summary>
@@ -157,13 +185,13 @@ public partial class GameMaster : Node {
     /// </summary>
     /// <param name="slotNum"></param>
     private static void SavePlayerData(int slotNum) { Save(SaveTypes.playerDat, slotNum); }
-    
+
     /// <summary>
     /// //Loads the selected slot file data into the runtime playerData slot.
     /// </summary>
     /// <param name="slotNum">1, 2, or 3</param>    
     public static void LoadPlayerData(int slotNum) { Load(SaveTypes.playerDat, slotNum, false); }
-    
+
     /// <summary>
     /// //Loads the playerData into one of the setup slot objects
     /// </summary>
@@ -238,24 +266,28 @@ public partial class GameMaster : Node {
                 Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, rPlayerData);
             } else {
                 if (slotNum == 1) {
-                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot1); }
-                    catch { loadedPlayerDataSlot1 = new PlayerData(); }                
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot1); } catch { loadedPlayerDataSlot1 = new PlayerData(); }
                 }
                 if (slotNum == 2) {
-                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot2); }
-                    catch { loadedPlayerDataSlot2 = new PlayerData(); }
-                    
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot2); } catch { loadedPlayerDataSlot2 = new PlayerData(); }
                 }
                 if (slotNum == 3) {
-                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot3); }
-                    catch { loadedPlayerDataSlot3 = new PlayerData(); }
+                    try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot3); } catch { loadedPlayerDataSlot3 = new PlayerData(); }
                 }
+
+                //(ExtraSlots) Uncomment these lines to enable additional save slots
+                //if (slotNum == 4) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot4); } catch { loadedPlayerDataSlot4 = new PlayerData(); }}
+                //if (slotNum == 5) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot5); } catch { loadedPlayerDataSlot5 = new PlayerData(); }}
+                //if (slotNum == 6) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot6); } catch { loadedPlayerDataSlot6 = new PlayerData(); }}
+                //if (slotNum == 7) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot7); } catch { loadedPlayerDataSlot6 = new PlayerData(); }}
+                //if (slotNum == 8) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot8); } catch { loadedPlayerDataSlot8 = new PlayerData(); }}
+                //if (slotNum == 9) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot9); } catch { loadedPlayerDataSlot9 = new PlayerData(); }}
+                //if (slotNum == 10) { try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, loadedPlayerDataSlot10); } catch { loadedPlayerDataSlot10 = new PlayerData(); }}
             }
         }
 
         if (mySaveType == SaveTypes.gameDat) {
-            try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, rGameData); }
-            catch { rGameData = new GameData(); }           
+            try { Newtonsoft.Json.JsonConvert.PopulateObject(jsonString, rGameData); } catch { rGameData = new GameData(); }
         }
 
     }
@@ -290,6 +322,15 @@ public partial class GameMaster : Node {
             if (slotNum == 1) { loadedPlayerDataSlot1 = new PlayerData(); SavePlayerData(slotNum); }
             if (slotNum == 2) { loadedPlayerDataSlot2 = new PlayerData(); SavePlayerData(slotNum); }
             if (slotNum == 3) { loadedPlayerDataSlot3 = new PlayerData(); SavePlayerData(slotNum); }
+
+            //(ExtraSlots) Uncomment these lines to enable additional save slots
+            //if (slotNum == 4) { loadedPlayerDataSlot4 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 5) { loadedPlayerDataSlot5 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 6) { loadedPlayerDataSlot6 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 7) { loadedPlayerDataSlot7 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 8) { loadedPlayerDataSlot8 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 9) { loadedPlayerDataSlot9 = new PlayerData(); SavePlayerData(slotNum); }
+            //if (slotNum == 10) { loadedPlayerDataSlot10 = new PlayerData(); SavePlayerData(slotNum); }
         }
         if (mySaveType == SaveTypes.gameDat) { rGameData = new GameData(); SaveGameData(); }
     }
@@ -303,7 +344,16 @@ public partial class GameMaster : Node {
         DeletePlayerData(2);
         DeletePlayerData(3);
 
-        GD.Print("(GameMaster) ResetAllData - All Game Data Reset!");
+        //(ExtraSlots) Uncomment these lines to enable additional save slots
+        //DeletePlayerData(4);
+        //DeletePlayerData(5);
+        //DeletePlayerData(6);
+        //DeletePlayerData(7);
+        //DeletePlayerData(8);
+        //DeletePlayerData(9);
+        //DeletePlayerData(10);
+
+        Log("(GameMaster) ResetAllData - All Game Data Reset!");
     }
 
     /// <summary>
@@ -325,7 +375,7 @@ public partial class GameMaster : Node {
 
     public static void SetVideoOnQuit() {
         if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen) { rGameData.screenType = ScreenTypes.FullScreen; }
-        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized) { rGameData.screenType= ScreenTypes.Maximized; }
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized) { rGameData.screenType = ScreenTypes.Maximized; }
         if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Windowed) { rGameData.screenType = ScreenTypes.Windowed; }
     }
 
