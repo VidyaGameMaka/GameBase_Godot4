@@ -8,7 +8,7 @@ Rename the folder to a name that you desire then import the project.godot file i
 * Save system for Game System options (gameData)  
 * Automatically saves game and player data on quit button or from OS window manager  
 * Multiple Slot Save System (playerData)  
-* Multiple Channel Audio System (Master, Music, Voice, Male, Female)  
+* Multiple Channel Audio System (Master, Music, SFX, Voice, Male, Female)  
 * Video system with resolution changing and fullscreen and windowed mode with automatic centering  
 * Translation system with support for text and audio file translation  
 * Includes example menus:  
