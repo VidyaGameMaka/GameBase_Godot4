@@ -1,30 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cygr3trr3wx51"]
+[gd_scene load_steps=4 format=3 uid="uid://dt404dr24qlsq"]
 
-[ext_resource type="Script" path="res://GameBase/UI/ButtonChangeScene.cs" id="1_gh4vl"]
+[ext_resource type="Texture2D" uid="uid://yc6tpxp5e3rd" path="res://icon.svg" id="1_k6jo1"]
+[ext_resource type="Script" path="res://GameBase/Scripts/Testing/PlayerDataTest.cs" id="1_m1bmn"]
+[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://Prefabs/Menus/RequiredSceneComponents.tscn" id="2_w1rgi"]
 
-[node name="30Level2" type="Node2D"]
+[node name="20_Level1" type="Node2D" node_paths=PackedStringArray("myLabel")]
+script = ExtResource("1_m1bmn")
+myLabel = NodePath("CanvasLayer/Control/Label")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "30_Level2"
+[node name="RequiredSceneComponents" parent="." instance=ExtResource("2_w1rgi")]
 
-[node name="Button" type="Button" parent="."]
-offset_top = 48.0
-offset_right = 45.0
-offset_bottom = 79.0
-text = "Back to Main"
-script = ExtResource("1_gh4vl")
-myScene = 10
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(407, 94)
+texture = ExtResource("1_k6jo1")
 
-[node name="Level1Button" type="Button" parent="."]
-offset_left = 139.0
-offset_top = 9.0
-offset_right = 267.0
-offset_bottom = 40.0
-text = "Goto Level 1"
-script = ExtResource("1_gh4vl")
-myScene = 20
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
-[connection signal="button_up" from="Level1Button" to="Level1Button" method="_on_button_up"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 270.0
+offset_bottom = 270.0
+text = "Default Text"

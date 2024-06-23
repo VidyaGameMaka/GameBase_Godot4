@@ -10,33 +10,34 @@ config_version=5
 
 [application]
 
-config/name="Game Base Godot 4"
+config/name="Tutorial"
 run/main_scene="res://Scenes/10_Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://GameBase/Audio/default_bus_layout.tres"
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-GameMaster="*res://GameBase/GameMaster/Autoload/GameMaster.cs"
-Translator="*res://GameBase/GameMaster/Autoload/Translator.cs"
-SceneManager="*res://GameBase/GameMaster/Autoload/SceneManager.cs"
-SoundSourcesPfb="*res://GameBase/GameMaster/Autoload/SoundSources_PFB.tscn"
+GameMaster="*res://GameBase/AutoLoad/GameMaster.cs"
+SceneManager="*res://GameBase/AutoLoad/SceneManager.cs"
+SoundSourcesPfb="*res://GameBase/AutoLoad/SoundSources_PFB.tscn"
+Translator="*res://GameBase/AutoLoad/Translator.cs"
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/always_on_top=true
-window/stretch/mode="viewport"
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
 [dotnet]
 
-project/assembly_name="Game Base Godot 4"
+project/assembly_name="GameBase"
 
 [rendering]
 
