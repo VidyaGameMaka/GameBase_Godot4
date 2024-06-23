@@ -1,4 +1,4 @@
-# Godot 4 C# GameBase for Godot 4.2.1 Mono
+# Godot 4 C# GameBase for Godot 4.2.2 .NET  
 
 An out-of-the box starting point for new Godot 4 C# games.  
 Download the ZIP from this repository and extract it to where you want your game to be located.  
