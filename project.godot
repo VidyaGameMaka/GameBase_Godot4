@@ -10,14 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Tutorial"
+config/name="GameBase"
 run/main_scene="res://Scenes/10_Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://GameBase/Sprites/icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://Audio/default_bus_layout.tres"
+buses/default_bus_layout="res://GameBase/Audio/default_bus_layout.tres"
 
 [autoload]
 
@@ -30,6 +30,7 @@ Translator="*res://GameBase/AutoLoad/Translator.cs"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/always_on_top=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"

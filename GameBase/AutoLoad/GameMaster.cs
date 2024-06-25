@@ -8,10 +8,10 @@ public partial class GameMaster : Node {
     public static GameMaster instance;
 
     //Release.Features.Patch
-    public static string gameVersion = "0.1.1 Build Date: 6/03/2024";
+    public static string gameVersion = "0.1.2 Build Date: 6/25/2024";
 
     //Total Save Slots: Change this to the number of slots you want your game to support.
-    private static int totalSaveSlots = 5;
+    private static int totalSaveSlots = 3;
 
     //---You shouldn't need to change anything beneath this line unless you are customizing your own save system.---
 
@@ -39,6 +39,9 @@ public partial class GameMaster : Node {
     //Audio Bus Indexes
     public static int master_index, music_index, sfx_index, voice_index, male_index, female_index;
 
+    //Scene Data Object
+    public static SceneData sceneData = new SceneData();
+
     #region Initialize
     public override void _Ready() {
         instance = this;
@@ -53,7 +56,7 @@ public partial class GameMaster : Node {
         LoadGameData();
 
         //Load saved Player Data into seperate fields so they can be displayed / manipulated on the save/load menu
-        for (int i = 1; i < totalSaveSlots; i++) {
+        for (int i = 1; i < totalSaveSlots + 1; i++) {
             LoadPlayerDataintoSlot(i);
         }
 

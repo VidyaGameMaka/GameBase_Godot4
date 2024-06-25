@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://deqp25cl6ddeg"]
 
-[ext_resource type="Script" path="res://Prefabs/Menus/Scripts/MainMenu.cs" id="1_hb8wx"]
-[ext_resource type="PackedScene" uid="uid://damoa1si6ve1e" path="res://Prefabs/Menus/SaveLoadDeleteMenu_PFB.tscn" id="1_vwfqs"]
-[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://Prefabs/Menus/RequiredSceneComponents.tscn" id="2_7il7i"]
-[ext_resource type="PackedScene" uid="uid://bnbilflc6abgg" path="res://Prefabs/Menus/AudioMenu_PFB.tscn" id="3_cqcbn"]
-[ext_resource type="PackedScene" uid="uid://boilmx0svyvb7" path="res://Prefabs/Menus/VideoMenu_PFB.tscn" id="4_i1owg"]
+[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/MainMenu.cs" id="1_hb8wx"]
+[ext_resource type="PackedScene" uid="uid://damoa1si6ve1e" path="res://GameBase/Prefabs/Menus/SaveLoadDeleteMenu_PFB.tscn" id="1_vwfqs"]
+[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_7il7i"]
+[ext_resource type="PackedScene" uid="uid://bnbilflc6abgg" path="res://GameBase/Prefabs/Menus/AudioMenu_PFB.tscn" id="3_cqcbn"]
+[ext_resource type="PackedScene" uid="uid://boilmx0svyvb7" path="res://GameBase/Prefabs/Menus/VideoMenu_PFB.tscn" id="4_i1owg"]
 
 [node name="10_Main" type="Node2D" node_paths=PackedStringArray("canvasLayers", "startButton", "audioButton", "videoButton", "quitButton")]
 script = ExtResource("1_hb8wx")
