@@ -48,6 +48,7 @@ offset_bottom = 258.0
 text = "Return to Main Menu"
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 377.0
 offset_top = 173.0
 offset_right = 427.0

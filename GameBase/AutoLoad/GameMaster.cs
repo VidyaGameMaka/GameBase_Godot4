@@ -56,7 +56,8 @@ public partial class GameMaster : Node {
         LoadGameData();
 
         //Load saved Player Data into seperate fields so they can be displayed / manipulated on the save/load menu
-        for (int i = 1; i < totalSaveSlots + 1; i++) {
+        for (int i = 1; i <= totalSaveSlots; i++) {
+            GD.Print("i " + i);
             LoadPlayerDataintoSlot(i);
         }
 
@@ -122,7 +123,9 @@ public partial class GameMaster : Node {
     /// </summary>
     public static void DeleteGameData() { Delete(SaveTypes.gameDat, 1); }
 
-    //Only called during initialization
+    /// <summary>
+    /// Load gameData object with data from file. Used only during initialization.
+    /// </summary>    
     private static void LoadGameData() { Load(SaveTypes.gameDat, 1); }
     #endregion
 
@@ -140,19 +143,21 @@ public partial class GameMaster : Node {
 
         string myFilePath = "user://" + mySaveType.ToString() + slotNum + ".sav";
 
-        //Save File Object
+        //Save File Object using Godot.FileAccess
         using var saveGame = FileAccess.Open(myFilePath, FileAccess.ModeFlags.Write);
 
-        //Empty String Object to hold the data
+        //Empty String Object to store the data
         string jsonString = string.Empty;
 
-        //Convert Entire Class to Json String using NewtonSoft.Json.
+        //Convert Entire Class to a one-line Json String using NewtonSoft.Json.
+        //playerDat type / playerData
         if (mySaveType == SaveTypes.playerDat) {
             //Serialize playerData into jsonString
             jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(playerData);
             //Update Dictionary loadedPlayerDataSlots
             loadedPlayerDataSlots[slotNum] = playerData;
         }
+        //gameDat type / gameData
         if (mySaveType == SaveTypes.gameDat) {
             jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(gameData);
         }
@@ -161,11 +166,17 @@ public partial class GameMaster : Node {
         saveGame.StoreLine(jsonString);
     }
 
-
+    /// <summary>
+    /// Saves data to a file in the user's application persistent path.
+    /// https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html
+    /// </summary>
+    /// <param name="mySaveType">SaveTypes.playerDat or SaveTypes.gameDat</param>
+    /// <param name="slotNum">Int</param>
     private static void Load(SaveTypes mySaveType, int slotNum) {
         //Don't load slot 0
         if (slotNum == 0) { return; }
 
+        //Specify save file path.
         string myFilePath = "user://" + mySaveType.ToString() + slotNum + ".sav";
 
         //Can't open file. Initialize the slot.
@@ -193,7 +204,16 @@ public partial class GameMaster : Node {
 
     }
 
+    /// <summary>
+    /// Deletes specified save file by overwriting it with default values in
+    /// the specified class: PlayerData.cs or GameData.cs
+    /// This only reflects in GameMaster. Your UI code will also need to update itself
+    /// after performing this operation.
+    /// </summary>
+    /// <param name="mySaveType">SaveTypes.playerDat or SaveTypes.gameDat</param>
+    /// <param name="slotNum">Int</param>
     private static void Delete(SaveTypes mySaveType, int slotNum) {
+        //Specify save file path.
         string myFilePath = "user://" + mySaveType.ToString() + slotNum + ".sav";
 
         //Overwrite specified player data slot with default values
@@ -210,6 +230,11 @@ public partial class GameMaster : Node {
         Save(mySaveType, slotNum);
     }
 
+    /// <summary>
+    /// Actual method that performs slot initialization and erasure.
+    /// </summary>
+    /// <param name="mySaveType"></param>
+    /// <param name="slotNum"></param>
     private static void InitializeSlot(SaveTypes mySaveType, int slotNum) {
         if (mySaveType == SaveTypes.playerDat) {
             loadedPlayerDataSlots[slotNum] = new PlayerData();
@@ -222,14 +247,18 @@ public partial class GameMaster : Node {
     }
     #endregion
 
-    //Video and Audio methods that are used by GameMaster during initialization.
 
+    // Video and Audio methods that are used by GameMaster during initialization.   
     #region Video Initialization
     public static void ApplyGameDataVideoSettings() {
+        //The stored resolution values are meaningless
+        //since Godot does not change the host's screen resolution on FullScreen.
         if (gameData.isFullScreen == true) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
         }
 
+        //If the game is not FullScreen, then use the stored resolution to set the window size.
+        //The window should automatically center onto the primary screen.
         if (gameData.isFullScreen == false) {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 
@@ -247,7 +276,7 @@ public partial class GameMaster : Node {
 
     #region Audio Initialization
     private void SetupAudioBusIndexes() {
-        //Assign Bus Indexes
+        //Assign Bus Index numbers to their string names on the bus.
         master_index = AudioServer.GetBusIndex("Master");
         music_index = AudioServer.GetBusIndex("Music");
         sfx_index = AudioServer.GetBusIndex("SFX");
@@ -257,6 +286,8 @@ public partial class GameMaster : Node {
     }
 
     public static void ApplyGameDataAudioSettings() {
+        //Set the volume of each bus to the stored value using Mathf.LinearToDb to
+        //convert the stored float range between (0 to 1) to the audio bus range of (-80 to +6)
         AudioServer.SetBusVolumeDb(master_index, Mathf.LinearToDb(gameData.masterVolume));
         AudioServer.SetBusVolumeDb(music_index, Mathf.LinearToDb(gameData.musicVolume));
         AudioServer.SetBusVolumeDb(sfx_index, Mathf.LinearToDb(gameData.sfxVolume));

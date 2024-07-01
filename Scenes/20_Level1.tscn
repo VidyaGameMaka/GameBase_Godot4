@@ -32,6 +32,7 @@ offset_bottom = 270.0
 text = "Default Text"
 
 [node name="Level2Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 223.0
 offset_right = 114.0
