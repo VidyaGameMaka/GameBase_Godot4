@@ -53,7 +53,7 @@ Your .csproj file should look similar to the one in this project.
 
 # Usage (Save/Load/Delete)  
 
-Player data has 3 save slots. This can be increased by changing the value of totalSaveSlots in GameMaster.cs  
+GameMaster has 3 Player data save slots by default. This can be increased by changing the value of totalSaveSlots in GameMaster.cs  
 Changing the value in GameMaster.cs will not update the example menu, you will need to update your menu to function as required.  
 An example menu for Save/Load/Delete is located in: res://GameBase/Prefabs/Menus/Scripts/SaveLoadDeleteMenu.cs  
 
