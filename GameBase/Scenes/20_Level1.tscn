@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://be11snw13ct0b"]
+
+[ext_resource type="Texture2D" uid="uid://yc6tpxp5e3rd" path="res://GameBase/Sprites/icon.svg" id="1_8srll"]
+[ext_resource type="Script" path="res://GameBase/Scripts/Testing/PlayerDataTest.cs" id="1_teobr"]
+[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_rb4ox"]
+
+[node name="20_Level1" type="Node2D" node_paths=PackedStringArray("myLabel")]
+script = ExtResource("1_teobr")
+myLabel = NodePath("CanvasLayer/Control/Label")
+
+[node name="RequiredSceneComponents" parent="." instance=ExtResource("2_rb4ox")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(407, 94)
+texture = ExtResource("1_8srll")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 270.0
+offset_bottom = 270.0
+text = "Default Text"
+
+[node name="Level2Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 223.0
+offset_right = 114.0
+offset_bottom = 254.0
+text = "Goto Level 2"
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 227.0
+offset_right = 471.0
+offset_bottom = 258.0
+text = "Return to Main Menu"
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 173.0
+offset_right = 427.0
+offset_bottom = 196.0
+text = "Level 1"
+
+[connection signal="button_up" from="CanvasLayer/Control/Level2Button" to="." method="_on_level_2_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/ReturnButton" to="." method="_on_return_button_button_up"]
