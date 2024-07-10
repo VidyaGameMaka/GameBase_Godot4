@@ -1,7 +1,7 @@
 # Godot 4 C# GameBase for Godot 4.2.1 or Higher .NET  
 An out-of-the box starting point for new Godot 4 C# games.  
   
-Click on the Green Code Button and Choose Download the ZIP from this repository.  
+Click on the Green Code Button and Choose Download ZIP.  
 Extract the downloaded zip file where you want your game to be located.  
 Rename the folder to a name that you desire open Godot Editor and import the file: project.godot  
 
