@@ -3,8 +3,14 @@
 public class english : Lng {
 
     protected override void ImplementationRun() {
-        
+
         #region Base Dictionaries
+        //Languages Dictionary is the same in all data sets
+        languages[Languages.english] = "English";
+        languages[Languages.spanish] = "Español";
+        languages[Languages.french] = "Français";
+
+
         //Main Menu
         mainMenu[0] = "Start";
         mainMenu[1] = "Audio";

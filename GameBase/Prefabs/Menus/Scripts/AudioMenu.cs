@@ -77,7 +77,7 @@ public partial class AudioMenu : CanvasLayer {
                 GameMaster.gameData.femaleVolume = myFloat;
                 break;
             default:
-                GD.Print("Requested Slider not specified: " + myString);
+                if (GameMaster.showDebuggingMessages) { GD.Print("Requested Slider not specified: " + myString); }
                 break;
         }
     }

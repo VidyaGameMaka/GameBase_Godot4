@@ -29,7 +29,7 @@ public partial class Translator : Node {
 
         runLang.Run();
 
-        GD.Print("(Translator) Language Selected: " + GameMaster.gameData.language);
+        if (GameMaster.showDebuggingMessages) { GD.Print("(Translator) Language Selected: " + GameMaster.gameData.language); }
     }
 
 

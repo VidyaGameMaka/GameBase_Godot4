@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class SaveLoadDeleteMenu : CanvasLayer {
 
@@ -29,24 +28,14 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
     [Export] public Label infoLabel3;
 
     public override void _Ready() {
-        SetupMenu();
+        Init();
     }
 
-    private void SetButtonText() {
-        new1.Text = Lng.saveLoadMenu[0] + " 1"; //new
-        load1.Text = Lng.saveLoadMenu[1] + " 1"; //load
-        delete1.Text = Lng.saveLoadMenu[2] + " 1"; //delete
+    private void Init() {
+        //Refresh the playerData to reflect what is saved in the file.
+        GameMaster.LoadPlayerDataSlots();
 
-        new2.Text = Lng.saveLoadMenu[0] + " 2"; //new
-        load2.Text = Lng.saveLoadMenu[1] + " 2"; //load
-        delete2.Text = Lng.saveLoadMenu[2] + " 2"; //delete
-
-        new3.Text = Lng.saveLoadMenu[0] + " 3"; //new
-        load3.Text = Lng.saveLoadMenu[1] + " 3"; //load
-        delete3.Text = Lng.saveLoadMenu[2] + " 3"; //delete
-
-        backButton.Text = Lng.mainMenu[4]; //Back
-        resetButton.Text = Lng.saveLoadMenu[3]; //Reset all data
+        SetupMenu();
     }
 
     private void SetupMenu() {
@@ -91,6 +80,24 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
         }
     }
 
+    private void SetButtonText() {
+        new1.Text = Lng.saveLoadMenu[0] + " 1"; //new
+        load1.Text = Lng.saveLoadMenu[1] + " 1"; //load
+        delete1.Text = Lng.saveLoadMenu[2] + " 1"; //delete
+
+        new2.Text = Lng.saveLoadMenu[0] + " 2"; //new
+        load2.Text = Lng.saveLoadMenu[1] + " 2"; //load
+        delete2.Text = Lng.saveLoadMenu[2] + " 2"; //delete
+
+        new3.Text = Lng.saveLoadMenu[0] + " 3"; //new
+        load3.Text = Lng.saveLoadMenu[1] + " 3"; //load
+        delete3.Text = Lng.saveLoadMenu[2] + " 3"; //delete
+
+        backButton.Text = Lng.mainMenu[4]; //Back
+        resetButton.Text = Lng.saveLoadMenu[3]; //Reset all data
+    }
+
+
     private void UpdateInfoLabels() {
         infoLabel1.Text = "New file: " + GameMaster.loadedPlayerDataSlots[1].newFile.ToString() + "     ";
         infoLabel1.Text += "Scene: " + GameMaster.loadedPlayerDataSlots[1].savedScene.ToString() + "     ";
@@ -111,13 +118,12 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
         GameMaster.currentSlotNum = myInt;
         //Load the slot sent by the argument into GameMaster.playerData
         GameMaster.playerData = GameMaster.loadedPlayerDataSlots[myInt];
-        
+
         //Make this save slot as not a new file
         GameMaster.playerData.newFile = false;
         //Set Version of Save File
         GameMaster.playerData.saveFileVersion = GameMaster.gameVersion;
-        //Save Everything
-        GameMaster.FullSave();
+
         //Change Scene to start the game or anything else that you'd like to do.
         SceneManager.instance.ChangeScene(GameMaster.playerData.savedScene);
     }
@@ -125,7 +131,9 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
     public void _on_delete_button_up(int myInt) {
         if (GameMaster.showDebuggingMessages) { GD.Print("(MainMenu) Slot deleted: " + myInt); }
         GameMaster.DeletePlayerData(myInt);
-        SetupMenu();
+
+        //Redo Menu Setup
+        Init();
     }
 
     public void _on_allreset_button_button_up() {
@@ -134,7 +142,9 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
         GameMaster.DeletePlayerData(1);
         GameMaster.DeletePlayerData(2);
         GameMaster.DeletePlayerData(3);
-        SetupMenu();
+
+        //Redo Menu Setup
+        Init();
     }
 
     public void _on_back_button_button_up() {

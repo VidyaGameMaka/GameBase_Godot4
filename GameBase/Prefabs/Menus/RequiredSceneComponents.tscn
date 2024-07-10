@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://p6s0yv0fqsss"]
+[gd_scene load_steps=2 format=3 uid="uid://p6s0yv0fqsss"]
 
 [ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/AutoLoadMusic.cs" id="1_4vgg1"]
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/AutoSaveOnSceneStart.cs" id="2_mk4wc"]
 
 [node name="RequiredSceneComponents" type="Node"]
 
 [node name="AutoLoadMusic" type="Node" parent="."]
 script = ExtResource("1_4vgg1")
-
-[node name="AutoSaveOnSceneStart" type="Node" parent="."]
-script = ExtResource("2_mk4wc")

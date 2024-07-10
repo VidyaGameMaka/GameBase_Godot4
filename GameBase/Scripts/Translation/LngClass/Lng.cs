@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-public enum Languages { english,  spanish, french }
+public enum Languages { english, spanish, french }
 
-public enum baseDicts { 
-    mainMenu = 10, 
-    audioMenu = 20, 
-    saveLoadMenu = 30, 
-    videoMenu = 40, 
+public enum baseDicts {
+    mainMenu = 10,
+    audioMenu = 20,
+    saveLoadMenu = 30,
+    videoMenu = 40,
     languages = 50
 }
 
@@ -23,12 +23,6 @@ public class Lng {
     public void Run() => ImplementationRun();
 
     // Stub virtual method to be overriden in child classes
-    protected virtual void ImplementationRun() {
+    protected virtual void ImplementationRun() { }
 
-        //Languages Dictionary is the same in all data sets
-        languages[Languages.english] = "English";
-        languages[Languages.spanish] = "Español";
-        languages[Languages.french] = "Français";
-
-    }
 }

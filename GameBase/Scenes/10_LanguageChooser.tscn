@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbebonxflgrov"]
+[gd_scene load_steps=3 format=3 uid="uid://dbebonxflgrov"]
 
 [ext_resource type="Script" path="res://GameBase/Scripts/SceneScripts/10_LanguageChooser/LanguageChooserMenu.cs" id="1_ug8qu"]
+[ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_i4si8"]
 
-[node name="10LanguageChooser" type="CanvasLayer"]
+[node name="10LanguageChooser" type="CanvasLayer" node_paths=PackedStringArray("englishButton", "spanishButton", "frenchButton")]
 script = ExtResource("1_ug8qu")
+englishButton = NodePath("Control/EnglishButton")
+spanishButton = NodePath("Control/SpanishButton")
+frenchButton = NodePath("Control/FrenchButton")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -15,27 +19,29 @@ grow_vertical = 2
 
 [node name="EnglishButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 79.0
-offset_bottom = 39.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 83.0
+offset_bottom = 41.0
 text = "English"
 
 [node name="SpanishButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 57.0
-offset_right = 84.0
-offset_bottom = 88.0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 89.0
+offset_bottom = 91.0
 text = "Spanish"
 
 [node name="FrenchButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 21.0
+offset_left = 20.0
 offset_top = 105.0
-offset_right = 82.0
+offset_right = 81.0
 offset_bottom = 136.0
 text = "French"
+
+[node name="RequiredSceneComponents" parent="." instance=ExtResource("2_i4si8")]
 
 [connection signal="button_up" from="Control/EnglishButton" to="." method="_on_english_button_button_up"]
 [connection signal="button_up" from="Control/SpanishButton" to="." method="_on_spanish_button_button_up"]

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,9 +16,10 @@ public partial class GameMaster : Node {
 
     //The slot number that the game will save and load to by default
     public static int currentSlotNum = 0;
-    
+
     public static bool paused = false;
     public static bool pauseAllowed = false;
+    public static bool saveAllowed = false;
     public static bool ignoreUserInput = false;
 
     public static bool showDebuggingMessages = true;
@@ -55,11 +55,8 @@ public partial class GameMaster : Node {
         //Load Game System Data
         LoadGameData();
 
-        //Load saved Player Data into seperate fields so they can be displayed / manipulated on the save/load menu
-        for (int i = 1; i <= totalSaveSlots; i++) {
-            GD.Print("i " + i);
-            LoadPlayerDataintoSlot(i);
-        }
+        //Load saved Player Data into seperate fields so they can be displayed and manipulated on the save/load menu
+        LoadPlayerDataSlots();
 
         //Apply GameData Video Settings on Game Start
         ApplyGameDataVideoSettings();
@@ -69,7 +66,16 @@ public partial class GameMaster : Node {
         ApplyGameDataAudioSettings();
 
         //This will tell us that GameMaster object was included in autoload.
-        GD.Print("(GameMaster) Gamemaster Ready");
+        if (showDebuggingMessages) { GD.Print("(GameMaster) Gamemaster Ready"); }
+    }
+
+    //Read the playerData for each slot from file
+    public static void LoadPlayerDataSlots() {
+        for (int i = 1; i <= totalSaveSlots; i++) {
+            if (showDebuggingMessages) { GD.Print("Loaded Slot: " + i); }
+            LoadPlayerDataintoSlot(i);
+        }
+        if (showDebuggingMessages) { GD.Print("(GameMaster) playerData slots loaded"); }
     }
     #endregion
 
@@ -80,10 +86,16 @@ public partial class GameMaster : Node {
     /// This is the recommended method used to save.
     /// </summary>
     public static void FullSave() {
-        //Save Player Data using the currentSlotNum
-        Save(SaveTypes.playerDat, currentSlotNum);
         //Save Game Data
         Save(SaveTypes.gameDat, 1);
+        if (showDebuggingMessages) { GD.Print("(GameMaster) Saved gameData"); }
+
+        //Only Save Player Data using the currentSlotNum if saving is allowed for the current scene
+        if (saveAllowed == true) {
+            Save(SaveTypes.playerDat, currentSlotNum);
+            if (showDebuggingMessages) { GD.Print("(GameMaster) Saved playerData"); }
+        }
+
     }
 
     /// <summary>

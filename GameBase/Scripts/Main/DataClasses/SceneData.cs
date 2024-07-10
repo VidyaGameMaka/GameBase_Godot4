@@ -21,7 +21,5 @@ public class SceneData {
         {eSceneNames.Level2, new SceneCstr("Level Two", true, true,"res://GameBase/Scenes/40_Level2.tscn", "res://GameBase/Audio/Music/Sneaky_Snitch_Kevin_McLeold_incomptech.mp3") },
     };
 
-    public SceneCstr mainMenu = new SceneCstr("Main", false, false, "res://GameBase/Scenes/10_Main.tscn", "res://GameBase/Audio/Music/KevinMcLeold_CloudDancer.mp3");
-
 
 }
