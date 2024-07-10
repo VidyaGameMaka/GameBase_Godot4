@@ -62,8 +62,8 @@ The recommended method is to use: GameMaster.FullSave();
 This will save your game's system data (GameMaster.gameData) as well as the current runtime player data (GameMaster.playerData)  
 
 ## Load Game:  
-GameMaster.rGameData is automatically loaded when the game starts, no action is required to load this.  
-To load rPlayerData for the current slot.  Example for Slot #1:  
+GameMaster.gameData is automatically loaded when the game starts, no action is required to load this.  
+To load playerData for the current slot.  Example for Slot #1:  
 
 ```  
 //Set the current slot to the one sent by the argument  
