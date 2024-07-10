@@ -309,6 +309,4 @@ public partial class GameMaster : Node {
     }
     #endregion
 
-
-
 }

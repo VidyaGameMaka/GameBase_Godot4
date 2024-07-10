@@ -90,3 +90,9 @@ SceneManager.instance.ChangeScene(GameMaster.playerData.savedScene);
 * GameMaster.DeletePlayerData(myInt);  
 Call GameMaster.DeletePlayerData and replace myInt with the slot you want to erase.  
 Note that GameMaster does not actually delete files from the filesystem. Instead it replaces the "deleted" slot with a blank copy of (res://GameBase/GameMaster/DataClasses/PlayerData.cs)  
+
+## Where are the various settings stored?  
+* GameBase/Scripts/Main/DataClasses  
+* GameData.cs - Contains game system settings such as: resolution, window size, audio volumes and language choice
+* PlayerData.cs - Contains the default save file for the players game, includes: scenes and checkpoints
+* SceneData.cs - Contains information about the scenes in your game including: Index: Scene Enum - Pretty Scene Name, pauseAllowed, saveAllowed, Scene Path, Music Path
