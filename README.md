@@ -5,6 +5,9 @@ Click on the Green Code Button and Choose Download ZIP.
 Extract the downloaded zip file where you want your game to be located.  
 Rename the folder to a name that you desire open Godot Editor and import the file: project.godot  
 
+# Keep This in Mind  
+This project is not perfect and it will probably never be perfect. After downloading this project and extracting it you will need to customize it for your own use. I did this as a starting point for those that intend to make a serious game with a full save system and a few other features that I always use in every game that I make. I've been fiddling with this GameBase project very much part time for over a year and have focused on making comments in the code and adding features that I want in my GameBase. So go ahead and take pieces of the code from this project and put them into your project however you need it to be. Make it your own.  
+
 # This project offers the following features:  
 * Save system for Game System options (gameData)  
 * Automatically saves game and player data on quit button or from OS window manager  
