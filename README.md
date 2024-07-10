@@ -93,6 +93,6 @@ Note that GameMaster does not actually delete files from the filesystem. Instead
 
 ## Where are the various settings stored?  
 * GameBase/Scripts/Main/DataClasses  
-* GameData.cs - Contains game system settings such as: resolution, window size, audio volumes and language choice
-* PlayerData.cs - Contains the default save file for the players game, includes: scenes and checkpoints
-* SceneData.cs - Contains information about the scenes in your game including: Index: Scene Enum - Pretty Scene Name, pauseAllowed, saveAllowed, Scene Path, Music Path
+* GameData.cs - Contains game system settings such as: resolution, window size, audio volumes and language choice  
+* PlayerData.cs - Contains the default save file for the players game, includes: scenes and checkpoints  
+* SceneData.cs - Contains information about the scenes in your game including: Index: Scene Enum - Pretty Scene Name, pauseAllowed, saveAllowed, Scene Path, Music Path  
