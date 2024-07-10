@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public enum Languages { en,  sp }
+public enum Languages { english,  spanish, french }
 
 public enum baseDicts { 
     mainMenu = 10, 
@@ -17,7 +17,7 @@ public class Lng {
     public static Dictionary<int, string> audioMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> saveLoadMenu = new Dictionary<int, string>();
     public static Dictionary<int, string> videoMenu = new Dictionary<int, string>();
-    public static Dictionary<int, string> languages = new Dictionary<int, string>();
+    public static Dictionary<Languages, string> languages = new Dictionary<Languages, string>();
     #endregion
 
     public void Run() => ImplementationRun();
@@ -26,8 +26,9 @@ public class Lng {
     protected virtual void ImplementationRun() {
 
         //Languages Dictionary is the same in all data sets
-        languages[0] = "English";
-        languages[1] = "Espanol";
-    
+        languages[Languages.english] = "English";
+        languages[Languages.spanish] = "Español";
+        languages[Languages.french] = "Français";
+
     }
 }

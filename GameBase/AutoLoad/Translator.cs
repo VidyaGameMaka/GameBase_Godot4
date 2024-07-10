@@ -1,25 +1,29 @@
 using Godot;
-using System;
 
 public partial class Translator : Node {
 
-	public static Translator instance;
+    public static Translator instance;
 
-    public static Lng runLang;
+    private Lng runLang;
 
     public override void _Ready() {
-	    ChangeLanguage();
-	}
+        instance = this;
+        ChangeLanguage();
+    }
 
     public void ChangeLanguage() {
         switch (GameMaster.gameData.language) {
-            case Languages.en:
-                runLang = new en();
+            case Languages.english:
+                runLang = new english();
                 break;
-            case Languages.sp:
-                runLang = new sp();
+            case Languages.spanish:
+                runLang = new spanish();
+                break;
+            case Languages.french:
+                runLang = new french();
                 break;
             default:
+                runLang = new english();
                 break;
         }
 

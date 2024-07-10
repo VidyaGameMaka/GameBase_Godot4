@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class VideoMenu : CanvasLayer {
 
@@ -40,7 +39,7 @@ public partial class VideoMenu : CanvasLayer {
         resLabel.Text = Lng.videoMenu[2]; //Resolution
 
         applyButton.Text = Lng.videoMenu[3]; //apply
-        backButton.Text = Lng.mainMenu[3]; //back
+        backButton.Text = Lng.mainMenu[4]; //back
     }
 
     private void SetWindowLabel(bool isSet) {
@@ -63,7 +62,7 @@ public partial class VideoMenu : CanvasLayer {
 
     public void _on_back_button_button_up() {
         GameMaster.SaveGameData();
-        MainMenu.instance.ShowLayer(0);
+        MainMenu.instance.ShowLayer(3);
     }
 
     public void _on_windowmode_check_button_toggled(bool toggled) {

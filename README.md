@@ -56,7 +56,7 @@ An example menu for Save/Load/Delete is located in: res://GameBase/Prefabs/Menus
 
 ## Save Game:  
 The recommended method is to use: GameMaster.FullSave();  
-This will save your game's system data (GameMaster.rGameData) as well as the current runtime player data (GameMaster.rPlayerData)  
+This will save your game's system data (GameMaster.gameData) as well as the current runtime player data (GameMaster.playerData)  
 
 ## Load Game:  
 GameMaster.rGameData is automatically loaded when the game starts, no action is required to load this.  

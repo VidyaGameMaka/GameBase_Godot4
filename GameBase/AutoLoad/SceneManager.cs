@@ -7,6 +7,8 @@ public partial class SceneManager : Node {
     public static SceneManager instance;
 
     private eSceneNames previousSceneName;
+    
+    public static eSceneNames currentScene { get; private set; } = eSceneNames.Main;
 
     public override void _Ready() {
         instance = this;
@@ -29,6 +31,7 @@ public partial class SceneManager : Node {
         GameMaster.pauseAllowed = GameMaster.sceneData.scnDict[mySceneName].pauseAllowed;
         GameMaster.playerData.savedScene = mySceneName;
         previousSceneName = mySceneName;
+        currentScene = mySceneName;
         GetTree().ChangeSceneToFile(myPath);
     }
 

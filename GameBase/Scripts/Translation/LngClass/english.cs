@@ -1,6 +1,6 @@
 //Inherits from Lng. English data file
 
-public class en : Lng {
+public class english : Lng {
 
     protected override void ImplementationRun() {
         
@@ -11,6 +11,7 @@ public class en : Lng {
         mainMenu[2] = "Video";
         mainMenu[3] = "Quit";
         mainMenu[4] = "Back";
+        mainMenu[5] = "Language";
 
         //Audio Menu
         audioMenu[0] = "Master";

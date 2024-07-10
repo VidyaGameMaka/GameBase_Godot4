@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameBase"
-run/main_scene="res://GameBase/Scenes/10_Main.tscn"
+run/main_scene="res://GameBase/Scenes/20_Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://GameBase/Sprites/icon.svg"
 

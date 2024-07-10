@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbebonxflgrov"]
+
+[ext_resource type="Script" path="res://GameBase/Scripts/SceneScripts/10_LanguageChooser/LanguageChooserMenu.cs" id="1_ug8qu"]
+
+[node name="10LanguageChooser" type="CanvasLayer"]
+script = ExtResource("1_ug8qu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnglishButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 79.0
+offset_bottom = 39.0
+text = "English"
+
+[node name="SpanishButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 57.0
+offset_right = 84.0
+offset_bottom = 88.0
+text = "Spanish"
+
+[node name="FrenchButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 105.0
+offset_right = 82.0
+offset_bottom = 136.0
+text = "French"
+
+[connection signal="button_up" from="Control/EnglishButton" to="." method="_on_english_button_button_up"]
+[connection signal="button_up" from="Control/SpanishButton" to="." method="_on_spanish_button_button_up"]
+[connection signal="button_up" from="Control/FrenchButton" to="." method="_on_french_button_button_up"]

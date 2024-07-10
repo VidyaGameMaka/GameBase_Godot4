@@ -17,7 +17,7 @@ public partial class GameMaster : Node {
 
     //The slot number that the game will save and load to by default
     public static int currentSlotNum = 0;
-
+    
     public static bool paused = false;
     public static bool pauseAllowed = false;
     public static bool ignoreUserInput = false;
@@ -27,7 +27,7 @@ public partial class GameMaster : Node {
     //Data Types Enum
     public enum SaveTypes { playerDat, gameDat }
 
-    //Game Data
+    //Game Data Runtime
     public static GameData gameData = new GameData();
 
     //Player Data Runtime

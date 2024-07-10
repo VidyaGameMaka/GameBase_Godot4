@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class AudioMenu : CanvasLayer {
 
@@ -41,7 +40,7 @@ public partial class AudioMenu : CanvasLayer {
 
         //Buttons
         backButton = GetNode<Button>("backButton");
-        backButton.Text = Lng.mainMenu[3]; //Back
+        backButton.Text = Lng.mainMenu[4]; //Back
     }
 
 
@@ -85,7 +84,7 @@ public partial class AudioMenu : CanvasLayer {
 
     public void _on_back_button_button_up() {
         GameMaster.FullSave();
-        MainMenu.instance.ShowLayer(0);
+        MainMenu.instance.ShowLayer(3);
     }
 
 }

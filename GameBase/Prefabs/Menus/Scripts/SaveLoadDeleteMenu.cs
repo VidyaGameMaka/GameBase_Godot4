@@ -96,11 +96,9 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
         infoLabel1.Text += "Scene: " + GameMaster.loadedPlayerDataSlots[1].savedScene.ToString() + "     ";
         infoLabel1.Text += "Test: " + GameMaster.loadedPlayerDataSlots[1].sampleDictionary["test"];
 
-
         infoLabel2.Text = "New file: " + GameMaster.loadedPlayerDataSlots[2].newFile.ToString() + "     ";
         infoLabel2.Text += "Scene: " + GameMaster.loadedPlayerDataSlots[2].savedScene.ToString() + "     ";
         infoLabel2.Text += "Test: " + GameMaster.loadedPlayerDataSlots[2].sampleDictionary["test"];
-
 
         infoLabel3.Text = "New file: " + GameMaster.loadedPlayerDataSlots[3].newFile.ToString() + "     ";
         infoLabel3.Text += "Scene: " + GameMaster.loadedPlayerDataSlots[3].savedScene.ToString() + "     ";
@@ -111,8 +109,9 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
     public void _on_new_load_button_up(int myInt) {
         //Set the current slot to the one sent by the argument
         GameMaster.currentSlotNum = myInt;
-        //Load the slot sent by the argument
+        //Load the slot sent by the argument into GameMaster.playerData
         GameMaster.playerData = GameMaster.loadedPlayerDataSlots[myInt];
+        
         //Make this save slot as not a new file
         GameMaster.playerData.newFile = false;
         //Set Version of Save File

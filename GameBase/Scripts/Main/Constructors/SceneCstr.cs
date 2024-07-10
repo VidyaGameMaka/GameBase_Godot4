@@ -1,8 +1,9 @@
 using Godot;
 public partial class SceneCstr : GodotObject {
-    public SceneCstr(string cPrettyName, bool cPauseAllowed, string cPath, string cMusicPath) {
+    public SceneCstr(string cPrettyName, bool cPauseAllowed, bool cSaveAllowed, string cPath, string cMusicPath) {
         prettyName = cPrettyName;
         pauseAllowed = cPauseAllowed;
+        saveAllowed = cSaveAllowed;
         path = cPath;
         musicPath = cMusicPath;
     }
@@ -10,4 +11,5 @@ public partial class SceneCstr : GodotObject {
     public string prettyName;
     public string musicPath;
     public bool pauseAllowed;
+    public bool saveAllowed;
 }

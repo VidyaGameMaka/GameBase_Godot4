@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class MainMenu : Node2D {
 
@@ -13,6 +12,7 @@ public partial class MainMenu : Node2D {
     [Export] private Button startButton;
     [Export] private Button audioButton;
     [Export] private Button videoButton;
+    [Export] private Button languageButton;
     [Export] private Button quitButton;
 
     public override void _Ready() {
@@ -24,10 +24,11 @@ public partial class MainMenu : Node2D {
     }
 
     private void SetupButtons() {
-        startButton.Text = Lng.mainMenu[0]; //start
-        audioButton.Text = Lng.mainMenu[1]; //audio
-        videoButton.Text = Lng.mainMenu[2]; //video
-        quitButton.Text = Lng.mainMenu[4]; //quit
+        startButton.Text = Lng.mainMenu[0]; //Start
+        audioButton.Text = Lng.mainMenu[1]; //Audio
+        videoButton.Text = Lng.mainMenu[2]; //Video
+        quitButton.Text = Lng.mainMenu[4]; //Quit
+        languageButton.Text = Lng.mainMenu[5]; //Language
     }
 
     public void ShowLayer(int myInt) {
@@ -39,6 +40,10 @@ public partial class MainMenu : Node2D {
         foreach (var layer in canvasLayers) {
             layer.Hide();
         }
+    }
+
+    public void _on_language_button_button_up() {
+        SceneManager.instance.ChangeScene(eSceneNames.LanguageChooser);
     }
 
     public void _on_quit_button_button_up() {

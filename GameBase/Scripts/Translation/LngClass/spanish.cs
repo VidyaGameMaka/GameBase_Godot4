@@ -1,5 +1,5 @@
 //Inherits from Lng. Spanish data file
-public class sp : Lng {
+public class spanish : Lng {
 
     protected override void ImplementationRun() {
 
@@ -10,6 +10,7 @@ public class sp : Lng {
         mainMenu[2] = "Video";
         mainMenu[3] = "Abandonar";
         mainMenu[4] = "Regresa";
+        mainMenu[5] = "Idioma";
 
         //Audio Menu
         audioMenu[0] = "Maestro";
