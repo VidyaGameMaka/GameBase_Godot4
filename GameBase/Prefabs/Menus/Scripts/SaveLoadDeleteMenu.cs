@@ -109,21 +109,17 @@ public partial class SaveLoadDeleteMenu : CanvasLayer {
 
 
     public void _on_new_load_button_up(int myInt) {
+        //Set the current slot to the one sent by the argument
         GameMaster.currentSlotNum = myInt;
-
-        if (myInt == 1) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlots[1];
-        }
-        if (myInt == 2) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlots[2];
-        }
-        if (myInt == 3) {
-            GameMaster.playerData = GameMaster.loadedPlayerDataSlots[3];
-        }
-
+        //Load the slot sent by the argument
+        GameMaster.playerData = GameMaster.loadedPlayerDataSlots[myInt];
+        //Make this save slot as not a new file
         GameMaster.playerData.newFile = false;
+        //Set Version of Save File
         GameMaster.playerData.saveFileVersion = GameMaster.gameVersion;
+        //Save Everything
         GameMaster.FullSave();
+        //Change Scene to start the game or anything else that you'd like to do.
         SceneManager.instance.ChangeScene(GameMaster.playerData.savedScene);
     }
 

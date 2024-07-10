@@ -17,3 +17,7 @@ mono_crash.*.json
 # Visual Studio cache directory
 .vs/
 .vs
+
+# Rider cache directory
+.idea
+.idea/
