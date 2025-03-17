@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnbilflc6abgg"]
 
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/AudioMenu.cs" id="1_5h833"]
+[ext_resource type="Script" uid="uid://dpnsbwyn7alf7" path="res://GameBase/Prefabs/Menus/Scripts/AudioMenu.cs" id="1_5h833"]
 
 [node name="AudioMenu" type="CanvasLayer"]
 script = ExtResource("1_5h833")

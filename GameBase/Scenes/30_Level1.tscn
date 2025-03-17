@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://be11snw13ct0b"]
 
 [ext_resource type="Texture2D" uid="uid://yc6tpxp5e3rd" path="res://GameBase/Sprites/icon.svg" id="1_8srll"]
-[ext_resource type="Script" path="res://GameBase/Scripts/Testing/PlayerDataTest.cs" id="1_teobr"]
+[ext_resource type="Script" uid="uid://ddn3hk2mam16b" path="res://GameBase/Scripts/Testing/PlayerDataTest.cs" id="1_teobr"]
 [ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_rb4ox"]
 
 [node name="20_Level1" type="Node2D" node_paths=PackedStringArray("myLabel")]

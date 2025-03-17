@@ -42,6 +42,19 @@ public partial class MainMenu : Node2D {
         }
     }
 
+    private void _on_start_button_button_up() {
+        ShowLayer(0);
+    }
+
+
+    private void _on_audio_button_button_up() {
+        ShowLayer(1);
+    }
+
+    private void _on_video_button_button_up() {
+        ShowLayer(2);
+    }
+
     public void _on_language_button_button_up() {
         SceneManager.instance.ChangeScene(eSceneNames.LanguageChooser);
     }

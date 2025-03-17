@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://deqp25cl6ddeg"]
 
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/MainMenu.cs" id="1_8oxwt"]
+[ext_resource type="Script" uid="uid://ci6fl5pwevbu8" path="res://GameBase/Prefabs/Menus/Scripts/MainMenu.cs" id="1_8oxwt"]
 [ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_l0am0"]
 [ext_resource type="PackedScene" uid="uid://damoa1si6ve1e" path="res://GameBase/Prefabs/Menus/SaveLoadDeleteMenu_PFB.tscn" id="3_gxms4"]
 [ext_resource type="PackedScene" uid="uid://bnbilflc6abgg" path="res://GameBase/Prefabs/Menus/AudioMenu_PFB.tscn" id="4_tcl5a"]
@@ -63,8 +63,8 @@ offset_bottom = 191.0
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="Main/startButton" to="." method="ShowLayer" binds= [0]]
-[connection signal="button_up" from="Main/audioButton" to="." method="ShowLayer" binds= [1]]
-[connection signal="button_up" from="Main/videoButton" to="." method="ShowLayer" binds= [2]]
+[connection signal="button_up" from="Main/startButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="Main/audioButton" to="." method="_on_audio_button_button_up"]
+[connection signal="button_up" from="Main/videoButton" to="." method="_on_video_button_button_up"]
 [connection signal="button_up" from="Main/languageButton" to="." method="_on_language_button_button_up"]
 [connection signal="button_up" from="Main/quitButton" to="." method="_on_quit_button_button_up"]

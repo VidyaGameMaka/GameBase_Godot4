@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using VGame;
 
 public partial class GameMaster : Node {
 
@@ -176,6 +177,12 @@ public partial class GameMaster : Node {
 
         //Write String to File
         saveGame.StoreLine(jsonString);
+
+        //Save a screenshot
+        if (mySaveType == SaveTypes.playerDat) {
+            var myScreenShot = new ScreenTools();
+            myScreenShot.SaveScreenShot(slotNum);
+        }
     }
 
     /// <summary>
@@ -230,7 +237,11 @@ public partial class GameMaster : Node {
 
         //Overwrite specified player data slot with default values
         if (mySaveType == SaveTypes.playerDat) {
+            //Reset slot data to default
             InitializeSlot(SaveTypes.playerDat, slotNum);
+            //Delete screenshot if it exists
+            var myScreenShot = new ScreenTools();
+            myScreenShot.DeleteScreenShot(slotNum);
         }
 
         //Overwrite default game data with default values
@@ -308,5 +319,6 @@ public partial class GameMaster : Node {
         AudioServer.SetBusVolumeDb(female_index, Mathf.LinearToDb(gameData.femaleVolume));
     }
     #endregion
+
 
 }

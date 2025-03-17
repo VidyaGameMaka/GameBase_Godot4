@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbebonxflgrov"]
 
-[ext_resource type="Script" path="res://GameBase/Scripts/SceneScripts/10_LanguageChooser/LanguageChooserMenu.cs" id="1_ug8qu"]
+[ext_resource type="Script" uid="uid://c2fy5m8upxru6" path="res://GameBase/Scripts/SceneScripts/10_LanguageChooser/LanguageChooserMenu.cs" id="1_ug8qu"]
 [ext_resource type="PackedScene" uid="uid://p6s0yv0fqsss" path="res://GameBase/Prefabs/Menus/RequiredSceneComponents.tscn" id="2_i4si8"]
 
 [node name="10LanguageChooser" type="CanvasLayer" node_paths=PackedStringArray("englishButton", "spanishButton", "frenchButton")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://damoa1si6ve1e"]
 
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/SaveLoadDeleteMenu.cs" id="1_e21ky"]
+[ext_resource type="Script" uid="uid://c61mo86ph3wxg" path="res://GameBase/Prefabs/Menus/Scripts/SaveLoadDeleteMenu.cs" id="1_e21ky"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_06p2i"]
 font_size = 8

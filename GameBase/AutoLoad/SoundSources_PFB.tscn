@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blmflkhkdhvn2"]
 
-[ext_resource type="Script" path="res://GameBase/Prefabs/Menus/Scripts/Snd.cs" id="1_mek5u"]
+[ext_resource type="Script" uid="uid://p54ulxlt6gof" path="res://GameBase/Prefabs/Menus/Scripts/Snd.cs" id="1_mek5u"]
 
 [node name="SoundSources" type="Node2D" node_paths=PackedStringArray("musicPlayer", "voicePlayer", "malePlayer", "femalePlayer", "sfxPlayers")]
 script = ExtResource("1_mek5u")
